@@ -1,15 +1,7 @@
 (function () {
-  /* ── Placeholder photos (cycling through café carousel) ───────────────────
-     Replace each item's `img` path with a real product photo later.        */
-  var PHOTOS = (function () {
-    var arr = [];
-    for (var i = 1; i <= 13; i++) {
-      arr.push('./img/cafe/Davinci%20cafe%20carousel%20' + i + '.webp');
-    }
-    return arr;
-  })();
-  var _pi = 0;
-  function ph() { return PHOTOS[_pi++ % PHOTOS.length]; }
+  /* ── Fallback photo for items without a specific product shot ───────────
+     Replace an item's `img` path with a real product photo later.          */
+  var FALLBACK = './img/cafe/menu/Menu-fallback.webp';
 
   /* ── Menu data ─────────────────────────────────────────────────────────────
      norteOnly: true  → hidden when the "Sur" tab is active
@@ -19,118 +11,118 @@
     {
       name: 'Panini',
       items: [
-        { name: 'Sándwich Leonardo',    price: '$6,00', img: ph(), desc: 'Pan de molde clásico, jamón ahumado, jamón de pierna, tocineta, queso gouda y mayonesa. Acompañado de tostones y yuquitas.' },
-        { name: 'Sándwich Gioconda',    price: '$6,25', img: ph(), desc: 'Pan de molde clásico, jamón de pierna, tocineta, queso gouda, huevo y mayonesa. Acompañado de tostones y yuquitas.' },
-        { name: 'Sándwich Omelette',    price: '$6,00', img: ph(), desc: 'Pan de molde multigranos, jamón ahumado, queso gouda, huevo. Acompañado de tostones y yuquitas.', norteOnly: true },
-        { name: 'Prensadito',           price: '$3,50', img: ph(), desc: 'Pan francés, jamón de pierna, queso blanco y salsa cóctel. Acompañado de tostones y yuquitas.' },
-        { name: 'Deli de Pavo',         price: '$7,00', img: ph(), desc: 'Pan suave de orégano, jamón de pavo, queso gouda, mozzarella y salsa de mostaza dulce. Acompañado de tostones y yuquitas.' },
-        { name: 'Deli Clásico',         price: '$7,00', img: ph(), desc: 'Pan suave de orégano, jamón de pierna, queso gouda, mozzarella y salsa cóctel. Acompañado de tostones y yuquitas.' },
-        { name: 'Rústico de Pollo',     price: '$7,55', img: ph(), desc: 'Pan de molde multigranos, pollo, tomates secos, queso gouda, mozzarella y mayo pesto. Acompañado de tostones y yuquitas.', norteOnly: true },
+        { name: 'Sándwich Leonardo',    price: '$6,00', img: './img/cafe/menu/sandwich-leonardo.webp', desc: 'Pan de molde clásico, jamón ahumado, jamón de pierna, tocineta, queso gouda y mayonesa. Acompañado de tostones y yuquitas.' },
+        { name: 'Sándwich Gioconda',    price: '$6,25', img: './img/cafe/menu/sandwich-gioconda.webp', desc: 'Pan de molde clásico, jamón de pierna, tocineta, queso gouda, huevo y mayonesa. Acompañado de tostones y yuquitas.' },
+        { name: 'Sándwich Omelette',    price: '$6,00', img: FALLBACK, desc: 'Pan de molde multigranos, jamón ahumado, queso gouda, huevo. Acompañado de tostones y yuquitas.', norteOnly: true },
+        { name: 'Prensadito',           price: '$3,50', img: './img/cafe/menu/prensadito.webp', desc: 'Pan francés, jamón de pierna, queso blanco y salsa cóctel. Acompañado de tostones y yuquitas.' },
+        { name: 'Deli de Pavo',         price: '$7,00', img: FALLBACK, desc: 'Pan suave de orégano, jamón de pavo, queso gouda, mozzarella y salsa de mostaza dulce. Acompañado de tostones y yuquitas.' },
+        { name: 'Deli Clásico',         price: '$7,00', img: './img/cafe/menu/sandwich-deli-clasico.webp', desc: 'Pan suave de orégano, jamón de pierna, queso gouda, mozzarella y salsa cóctel. Acompañado de tostones y yuquitas.' },
+        { name: 'Rústico de Pollo',     price: '$7,55', img: './img/cafe/menu/rustico-de-pollo.webp', desc: 'Pan de molde multigranos, pollo, tomates secos, queso gouda, mozzarella y mayo pesto. Acompañado de tostones y yuquitas.', norteOnly: true },
       ],
     },
     {
       name: 'Empanadas Horneadas o Integrales',
       items: [
-        { name: 'Maíz y ricotta',   price: '$3,85', img: ph() },
-        { name: 'Espinaca',         price: '$3,85', img: ph() },
-        { name: 'Ricotta Pollo',    price: '$3,85', img: ph() },
+        { name: 'Maíz y ricotta',   price: '$3,85', img: './img/cafe/menu/empanada-maiz-y-ricota.webp' },
+        { name: 'Espinaca',         price: '$3,85', img: FALLBACK },
+        { name: 'Ricotta Pollo',    price: '$3,85', img: './img/cafe/menu/empanada-ricota-de-pollo.webp' },
       ],
     },
     {
       name: 'Cachitos',
       items: [
-        { name: 'Pavo y queso crema', price: '$5,00', img: ph() },
-        { name: 'Tres quesos',        price: '$3,50', img: ph() },
-        { name: 'Jamón ahumado',      price: '$2,00', img: ph() },
-        { name: 'Jamón y Queso',      price: '$2,50', img: ph() },
+        { name: 'Pavo y queso crema', price: '$5,00', img: FALLBACK },
+        { name: 'Tres quesos',        price: '$3,50', img: FALLBACK },
+        { name: 'Jamón ahumado',      price: '$2,00', img: './img/cafe/menu/cachitos-jamon-ahumado.webp' },
+        { name: 'Jamón y Queso',      price: '$2,50', img: FALLBACK },
       ],
     },
     {
       name: 'Hojaldres',
       items: [
-        { name: 'Jamón y queso crema', price: '$5,15', img: ph() },
-        { name: 'Pollo',               price: '$4,00', img: ph() },
-        { name: 'Jamón y queso',       price: '$4,25', img: ph() },
+        { name: 'Jamón y queso crema', price: '$5,15', img: FALLBACK },
+        { name: 'Pollo',               price: '$4,00', img: FALLBACK },
+        { name: 'Jamón y queso',       price: '$4,25', img: FALLBACK },
       ],
     },
     {
       name: 'Infusiones 14 oz',
       items: [
-        { name: 'Té negro',                 price: '$2,50', img: ph() },
-        { name: 'Té negro con parchita',    price: '$2,75', img: ph() },
-        { name: 'Frutos rojos',             price: '$2,50', img: ph() },
-        { name: 'Frutos rojos con parchita',price: '$2,75', img: ph() },
-        { name: 'Limonada',                 price: '$2,85', img: ph() },
-        { name: 'Limonada con menta',       price: '$3,00', img: ph() },
+        { name: 'Té negro',                 price: '$2,50', img: FALLBACK },
+        { name: 'Té negro con parchita',    price: '$2,75', img: FALLBACK },
+        { name: 'Frutos rojos',             price: '$2,50', img: FALLBACK },
+        { name: 'Frutos rojos con parchita',price: '$2,75', img: FALLBACK },
+        { name: 'Limonada',                 price: '$2,85', img: FALLBACK },
+        { name: 'Limonada con menta',       price: '$3,00', img: FALLBACK },
       ],
     },
     {
       name: 'Infusiones Frías',
       items: [
-        { name: 'Limonada Detox',       price: '$3,25', img: ph(), desc: 'Pepino, jengibre y hierbabuena.' },
-        { name: 'Sparkling Frutos Rojos', price: '$3,00', img: ph(), desc: 'Té de frutos rojos, agua sparkling, fresas, arándanos y limón.' },
+        { name: 'Limonada Detox',       price: '$3,25', img: './img/cafe/menu/limonada-detox.webp', desc: 'Pepino, jengibre y hierbabuena.' },
+        { name: 'Sparkling Frutos Rojos', price: '$3,00', img: './img/cafe/menu/sparkling-frutos-rojos.webp', desc: 'Té de frutos rojos, agua sparkling, fresas, arándanos y limón.' },
       ],
     },
     {
       name: 'Jugos Naturales 14 oz',
       items: [
-        { name: 'Jugo de naranja', price: '$4,00', img: ph() },
-        { name: 'Fresa',           price: '$4,00', img: ph() },
-        { name: 'Melón',           price: '$3,00', img: ph() },
-        { name: 'Piña',            price: '$4,00', img: ph() },
-        { name: 'Jugo Verde',      price: '$4,00', img: ph(), desc: 'Piña, célery, espinacas, pepino, jengibre y hierbabuena.' },
+        { name: 'Jugo de naranja', price: '$4,00', img: FALLBACK },
+        { name: 'Fresa',           price: '$4,00', img: FALLBACK },
+        { name: 'Melón',           price: '$3,00', img: FALLBACK },
+        { name: 'Piña',            price: '$4,00', img: FALLBACK },
+        { name: 'Jugo Verde',      price: '$4,00', img: FALLBACK, desc: 'Piña, célery, espinacas, pepino, jengibre y hierbabuena.' },
       ],
     },
     {
       name: 'Otras Bebidas',
       items: [
-        { name: 'Agua mineral 300ml',   price: '$1,50', img: ph() },
-        { name: 'Agua Sparkling 500ml', price: '$2,75', img: ph() },
-        { name: 'Gaseosas en Lata',     price: '$2,95', img: ph(), desc: 'Pepsi (Regular, Light, Zero), 7up.' },
+        { name: 'Agua mineral 300ml',   price: '$1,50', img: FALLBACK },
+        { name: 'Agua Sparkling 500ml', price: '$2,75', img: FALLBACK },
+        { name: 'Gaseosas en Lata',     price: '$2,95', img: FALLBACK, desc: 'Pepsi (Regular, Light, Zero), 7up.' },
       ],
     },
     {
       name: 'Café Frío 14 oz',
       items: [
-        { name: 'Iced Latte Vainilla',       price: '$4,50', img: ph(), desc: 'Crema de café, leche y vainilla.' },
-        { name: 'Iced Latte Salted Caramel', price: '$4,50', img: ph(), desc: 'Crema de café, leche y caramelo salado.' },
-        { name: 'Iced Latte Moka',           price: '$4,50', img: ph(), desc: 'Crema de café, leche y sirope de chocolate.' },
-        { name: 'Iced Latte Tiramisú',       price: '$4,75', img: ph(), desc: 'Crema de café, crema tiramisú, leche y cacao.' },
-        { name: 'Iced Latte Pistacchio',     price: '$7,00', img: ph(), desc: 'Crema de café y pistacho, leche y topping.' },
-        { name: 'Frozen Cappuccino',         price: '$4,50', img: ph(), desc: 'Crema de café, leche, topping y sirope de chocolate. Servido frappe.' },
+        { name: 'Iced Latte Vainilla',       price: '$4,50', img: FALLBACK, desc: 'Crema de café, leche y vainilla.' },
+        { name: 'Iced Latte Salted Caramel', price: '$4,50', img: FALLBACK, desc: 'Crema de café, leche y caramelo salado.' },
+        { name: 'Iced Latte Moka',           price: '$4,50', img: FALLBACK, desc: 'Crema de café, leche y sirope de chocolate.' },
+        { name: 'Iced Latte Tiramisú',       price: '$4,75', img: FALLBACK, desc: 'Crema de café, crema tiramisú, leche y cacao.' },
+        { name: 'Iced Latte Pistacchio',     price: '$7,00', img: FALLBACK, desc: 'Crema de café y pistacho, leche y topping.' },
+        { name: 'Frozen Cappuccino',         price: '$4,50', img: FALLBACK, desc: 'Crema de café, leche, topping y sirope de chocolate. Servido frappe.' },
       ],
     },
     {
       name: 'Café 6oz',
       items: [
-        { name: 'Americano',        price: '$2,50', img: ph() },
-        { name: 'Latte',            price: '$3,30', img: ph() },
-        { name: 'Latte Vainilla',   price: '$3,55', img: ph() },
-        { name: 'Latte Salt Caramel', price: '$3,50', img: ph() },
-        { name: 'Cappuccino',       price: '$3,25', img: ph() },
-        { name: 'Pistacchino',      price: '$6,00', img: ph() },
-        { name: 'Moka',             price: '$4,00', img: ph() },
+        { name: 'Americano',        price: '$2,50', img: FALLBACK },
+        { name: 'Latte',            price: '$3,30', img: FALLBACK },
+        { name: 'Latte Vainilla',   price: '$3,55', img: FALLBACK },
+        { name: 'Latte Salt Caramel', price: '$3,50', img: FALLBACK },
+        { name: 'Cappuccino',       price: '$3,25', img: FALLBACK },
+        { name: 'Pistacchino',      price: '$6,00', img: FALLBACK },
+        { name: 'Moka',             price: '$4,00', img: FALLBACK },
       ],
     },
     {
       name: 'Café 4oz',
       items: [
-        { name: 'Americano',  price: '$2,00', img: ph() },
-        { name: 'Ristretto',  price: '$2,25', img: ph() },
-        { name: 'Espresso',   price: '$2,00', img: ph() },
-        { name: 'Doppio',     price: '$2,25', img: ph() },
-        { name: 'Macchiato',  price: '$2,25', img: ph() },
-        { name: 'Latte',      price: '$2,25', img: ph() },
+        { name: 'Americano',  price: '$2,00', img: FALLBACK },
+        { name: 'Ristretto',  price: '$2,25', img: FALLBACK },
+        { name: 'Espresso',   price: '$2,00', img: FALLBACK },
+        { name: 'Doppio',     price: '$2,25', img: FALLBACK },
+        { name: 'Macchiato',  price: '$2,25', img: FALLBACK },
+        { name: 'Latte',      price: '$2,25', img: FALLBACK },
       ],
     },
     {
       name: 'Promos',
       items: [
-        { name: 'Prensadito + Cappuccino',       price: '$4,00', img: ph() },
-        { name: 'Cachito + Cappuccino',          price: '$3,00', img: ph() },
-        { name: 'Torta del Día + Cappuccino',    price: '$5,95', img: ph() },
-        { name: 'Ponque + Cappuccino',           price: '$2,95', img: ph() },
-        { name: 'Combo Pranzo',                  price: '$7,50', img: ph(), desc: 'Pastelito + Refresco + Pan.' },
+        { name: 'Prensadito + Cappuccino',       price: '$4,00', img: FALLBACK },
+        { name: 'Cachito + Cappuccino',          price: '$3,00', img: FALLBACK },
+        { name: 'Torta del Día + Cappuccino',    price: '$5,95', img: FALLBACK },
+        { name: 'Ponque + Cappuccino',           price: '$2,95', img: FALLBACK },
+        { name: 'Combo Pranzo',                  price: '$7,50', img: FALLBACK, desc: 'Pastelito + Refresco + Pan.' },
       ],
     },
   ];
@@ -222,16 +214,19 @@
       listEl.appendChild(catEl);
 
       items.forEach(function (item) {
+        var hasPhoto = !!item.img && item.img !== FALLBACK;
+
         var row = document.createElement('button');
         row.type = 'button';
         row.className = 'cafe-menu__item';
+        if (!hasPhoto) row.classList.add('cafe-menu__item--no-photo');
         row.dataset.img   = item.img   || '';
         row.dataset.name  = item.name;
         row.dataset.desc  = item.desc  || '';
         row.dataset.price = item.price;
 
-        /* Camera badge (visible on mobile) */
-        if (item.img) {
+        /* Camera badge (visible on mobile, only for real product photos) */
+        if (hasPhoto) {
           var badge = document.createElement('span');
           badge.className = 'cafe-menu__badge';
           badge.setAttribute('aria-hidden', 'true');
@@ -269,8 +264,10 @@
         priceEl.textContent = item.price;
         row.appendChild(priceEl);
 
-        /* Interactions */
-        row.addEventListener('click',      function () { setPreview(row); openPreview(); });
+        /* Interactions — items without a real photo don't open the overlay */
+        if (hasPhoto) {
+          row.addEventListener('click', function () { setPreview(row); openPreview(); });
+        }
         row.addEventListener('mouseenter', function () { setPreview(row); });
         row.addEventListener('focus',      function () { setPreview(row); });
 

@@ -61,7 +61,7 @@
       "horario.kicker": "Visítanos",
       "horario.title": "Horario",
       "horario.dommier": "Domingo a Miércoles",
-      "horario.domh": "07:30 a. m. – 09:30 p. m.",
+      "horario.domh": "07:30 a. m. – 10:00 p. m.",
       "horario.juesab": "Jueves a Sábado",
       "horario.jueh": "07:30 a. m. – 11:00 p. m.",
       "ubicanos.title": "Maracaibo, edo. Zulia",
@@ -97,13 +97,14 @@
       "cafe.m4": "Bebidas",
       "cafe.m4d": "Infusiones, jugos y bebidas frías.",
       "cafe.m5": "Café",
-      "cafe.m5d": "Espresso, latte art y café de especialidad.",
+      "cafe.m5d": "Espresso, latte art.",
 
       "cafe.about.tagline": "Una pasión artesanal con raíces de verdad",
       "cafe.about.body":
         "Nacimos del deseo de hacer las cosas bien, sin atajos ni prisas. Cada pan que sale del horno y cada postre que preparamos lleva el respeto por el oficio y el amor por el detalle que marca la diferencia.",
 
-      "cafe.hero.kicker": "Panadería artesanal · Repostería · Cafetería · Maracaibo",
+      "cafe.hero.kicker":
+        "Panadería artesanal · Repostería · Cafetería · Maracaibo",
       "cafe.hero.title": "El momento más rico del día te espera aquí",
       "cafe.hero.sub":
         "Pan recién horneado, postres únicos y café de especialidad. Cuatro sedes en Maracaibo para que te quedes un poco más.",
@@ -165,7 +166,8 @@
       "garantia.body":
         "We know what we do and we guarantee memorable experiences.",
       "valores.heading": "Values",
-      "valores.body": "Excellence · Outstanding service · Respect · Commitment.",
+      "valores.body":
+        "Excellence · Outstanding service · Respect · Commitment.",
 
       "mercato.kicker": "Mercato DOC",
       "mercato.title": "Artisan products,\n100% Venezuelan craft",
@@ -190,7 +192,7 @@
       "horario.kicker": "Visit us",
       "horario.title": "Hours",
       "horario.dommier": "Sunday to Wednesday",
-      "horario.domh": "07:30 a.m. – 09:30 p.m.",
+      "horario.domh": "07:30 a.m. – 10:00 p.m.",
       "horario.juesab": "Thursday to Saturday",
       "horario.jueh": "07:30 a.m. – 11:00 p.m.",
       "ubicanos.title": "Maracaibo, Zulia State",
@@ -313,7 +315,7 @@
       "horario.kicker": "Visitaci",
       "horario.title": "Orari",
       "horario.dommier": "Domenica a Mercoledì",
-      "horario.domh": "07:30 – 21:30",
+      "horario.domh": "07:30 – 22:00",
       "horario.juesab": "Giovedì a Sabato",
       "horario.jueh": "07:30 – 23:00",
       "ubicanos.title": "Maracaibo, Stato Zulia",
@@ -355,7 +357,8 @@
       "cafe.about.body":
         "Siamo nati dal desiderio genuino di fare le cose bene — senza scorciatoie né fretta. Ogni pane che esce dal forno e ogni dolce che prepariamo porta con sé il rispetto per il mestiere e l'amore per i dettagli.",
 
-      "cafe.hero.kicker": "Panetteria artigianale · Pasticceria · Caffetteria · Maracaibo",
+      "cafe.hero.kicker":
+        "Panetteria artigianale · Pasticceria · Caffetteria · Maracaibo",
       "cafe.hero.title": "Il momento più bello della giornata\nti aspetta qui",
       "cafe.hero.sub":
         "Pane appena sfornato, dolci unici e caffè speciale. Quattro sedi a Maracaibo per farti restare un po' di più.",

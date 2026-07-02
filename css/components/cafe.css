@@ -580,6 +580,7 @@
   min-height: 0;
   width: 100%;
   align-items: start;
+  position: relative;
 }
 
 /* Scrollable list column */
@@ -776,6 +777,32 @@
   color: var(--cafe-bronze, #6f5d3a);
 }
 
+/* ── Preview footer: Da Vinci illustration deco ─────────────────────────────── */
+
+/* Positioned outside the aside so the aside's opacity-transition (on item change)
+   never hides the deco — it stays fixed regardless of which dish is selected */
+.cafe-menu__preview-footer {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 320px;
+  height: 260px;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Da Vinci illustration — mirrors the #nosotros deco in ristorante.css:717-730 */
+.cafe-menu__preview-deco {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-color: #c9bfa3;
+  -webkit-mask: url("../../img/Illustrations/Davinci.svg") no-repeat top center / 80%;
+  mask: url("../../img/Illustrations/Davinci.svg") no-repeat top center / 80%;
+  opacity: 0.62;
+}
+
 /* ── Desktop: larger text ───────────────────────────────────────────────────── */
 @media (min-width: 901px) {
   .cafe-menu__cat       { font-size: 0.92rem; }
@@ -794,6 +821,7 @@
   .menu-modal--cafe .menu-modal__panel  { max-width: 720px; }
   .menu-modal--cafe .cafe-menu          { grid-template-columns: 1fr 240px; }
   .cafe-menu__preview-media             { height: 200px; }
+  .cafe-menu__preview-footer            { width: 240px; height: 210px; }
 }
 
 /* ── Mobile: list only; preview = overlay on tap ────────────────────────────── */
@@ -809,6 +837,15 @@
   }
   /* Badge visible with pulse */
   .cafe-menu__badge { display: inline-flex; }
+
+  /* Items without a real photo aren't tappable on mobile */
+  .cafe-menu__item--no-photo { cursor: default; }
+  .cafe-menu__item--no-photo:hover,
+  .cafe-menu__item--no-photo:focus-visible,
+  .cafe-menu__item--no-photo.is-active { background: none; }
+
+  /* Hide the bottom decorative footer on mobile overlay — the social rail is already in the hero */
+  .cafe-menu__preview-footer { display: none; }
 
   /* Preview becomes a fixed overlay (hidden by default) */
   .cafe-menu__preview {
