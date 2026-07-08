@@ -96,7 +96,7 @@
       "cafe.m3d": "Postres únicos, dulces de la casa.",
       "cafe.m4": "Bebidas",
       "cafe.m4d": "Infusiones, jugos y bebidas frías.",
-      "cafe.m5": "Café",
+      "cafe.m5": "Variadas bebidas y cafés",
       "cafe.m5d": "Espresso, latte art.",
 
       "cafe.about.tagline": "Una pasión artesanal con raíces de verdad",
@@ -227,7 +227,7 @@
       "cafe.m3d": "Unique desserts, house sweets.",
       "cafe.m4": "Drinks",
       "cafe.m4d": "Infusions, juices and cold drinks.",
-      "cafe.m5": "Coffee",
+      "cafe.m5": "Varied drinks & coffees",
       "cafe.m5d": "Espresso, latte art and specialty coffee.",
 
       "cafe.about.tagline": "A true artisan passion",
@@ -350,7 +350,7 @@
       "cafe.m3d": "Dolci unici, fatti in casa.",
       "cafe.m4": "Bevande",
       "cafe.m4d": "Infusi, succhi e bevande fredde.",
-      "cafe.m5": "Caffè",
+      "cafe.m5": "Bevande e caffè variati",
       "cafe.m5d": "Espresso, latte art e caffè speciale.",
 
       "cafe.about.tagline": "Una passione artigianale autentica",
