@@ -137,8 +137,6 @@
   var previewMedia = modal && modal.querySelector('.cafe-menu__preview-media');
   var previewImg   = modal && modal.querySelector('[data-cafe-menu-preview-img]');
   var previewName  = modal && modal.querySelector('[data-cafe-menu-preview-name]');
-  var previewDesc  = modal && modal.querySelector('[data-cafe-menu-preview-desc]');
-  var previewPrice = modal && modal.querySelector('[data-cafe-menu-preview-price]');
   if (!modal) return;
 
   /* ── Preview overlay (mobile: show/hide) ────────────────────────────────── */
@@ -157,8 +155,6 @@
 
     var newSrc   = el.dataset.img   || '';
     var newName  = el.dataset.name  || '';
-    var newDesc  = el.dataset.desc  || '';
-    var newPrice = el.dataset.price || '';
 
     /* Fade out the preview panel */
     previewEl.classList.add('is-transitioning');
@@ -166,8 +162,6 @@
     setTimeout(function () {
       /* Update text immediately (visible once image is ready) */
       previewName.textContent  = newName;
-      previewDesc.textContent  = newDesc;
-      previewPrice.textContent = newPrice;
       previewImg.alt           = newName;
 
       /* If same image, just fade back in — no reload needed */
@@ -197,6 +191,17 @@
     }, 110);
   }
 
+  /* ── Category anchors ───────────────────────────────────────────────────── */
+  function slug(str) {
+    return String(str)
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '')
+      .toLowerCase()
+      .trim()
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/(^-|-$)/g, '');
+  }
+
   /* ── Build menu list ────────────────────────────────────────────────────── */
   function buildMenu(loc) {
     listEl.innerHTML = '';
@@ -210,6 +215,7 @@
 
       var catEl = document.createElement('div');
       catEl.className = 'cafe-menu__cat';
+      catEl.id = 'cafe-cat-' + slug(cat.name);
       catEl.textContent = cat.name;
       listEl.appendChild(catEl);
 
@@ -285,15 +291,24 @@
       previewImg.src           = _currentSrc;
       previewImg.alt           = firstItem.dataset.name  || '';
       previewName.textContent  = firstItem.dataset.name  || '';
-      previewDesc.textContent  = firstItem.dataset.desc  || '';
-      previewPrice.textContent = firstItem.dataset.price || '';
     }
 
     listEl.scrollTop = 0;
   }
 
   /* ── Open / close ───────────────────────────────────────────────────────── */
-  function open(tab) {
+  var _targetCat = null;
+
+  function scrollToCategory(catName) {
+    var id = 'cafe-cat-' + slug(catName);
+    requestAnimationFrame(function () {
+      var el = listEl.querySelector('#' + id);
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  }
+
+  function open(tab, targetCat) {
+    _targetCat = targetCat || null;
     modal.removeAttribute('hidden');
     requestAnimationFrame(function () { modal.classList.add('is-open'); });
     document.body.style.overflow = 'hidden';
@@ -303,6 +318,7 @@
   function close() {
     modal.classList.remove('is-open');
     document.body.style.overflow = '';
+    _targetCat = null;
     if (MENU_HASHES.has(location.hash)) {
       history.replaceState(null, '', location.pathname + location.search);
     }
@@ -317,6 +333,7 @@
     });
     buildMenu(name);
     history.replaceState(null, '', '#menu-' + name);
+    if (_targetCat) scrollToCategory(_targetCat);
   }
 
   /* ── Hash / deep-linking ────────────────────────────────────────────────── */
@@ -329,6 +346,13 @@
   /* ── Event wiring ───────────────────────────────────────────────────────── */
   document.querySelectorAll('[data-cafe-menu-open]').forEach(function (el) {
     el.addEventListener('click', function (e) { e.preventDefault(); open(); });
+  });
+
+  document.querySelectorAll('[data-cafe-menu-cat]').forEach(function (el) {
+    el.addEventListener('click', function (e) {
+      e.preventDefault();
+      open('norte', el.dataset.cafeMenuCat);
+    });
   });
 
   modal.querySelectorAll('[data-cafe-menu-close]').forEach(function (el) {

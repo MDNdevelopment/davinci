@@ -412,6 +412,12 @@
   margin: 0 auto;
 }
 .dv-bake {
+  display: block;
+  width: 100%;
+  text-align: left;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
   background: #fff;
   border: 1px solid rgba(62, 74, 51, 0.14);
   border-radius: 14px;
@@ -419,11 +425,17 @@
   box-shadow: 0 10px 24px rgba(62, 74, 51, 0.05);
   transition:
     transform 0.25s,
-    box-shadow 0.25s;
+    box-shadow 0.25s,
+    border-color 0.25s;
 }
-.dv-bake:hover {
+.dv-bake:hover,
+.dv-bake:focus-visible {
   transform: translateY(-5px);
   box-shadow: 0 16px 36px rgba(62, 74, 51, 0.1);
+}
+.dv-bake:focus-visible {
+  outline: none;
+  border-color: var(--cafe-accent, #6f5d3a);
 }
 .dv-bake .num {
   font-family: var(--font-display);
@@ -763,46 +775,6 @@
   margin: 0;
   line-height: 1.3;
 }
-.cafe-menu__preview-desc {
-  font-family: "Poppins-Regular", "Poppins", sans-serif;
-  font-size: 0.72rem;
-  color: rgba(74, 63, 48, 0.65);
-  margin: 0;
-  line-height: 1.5;
-}
-.cafe-menu__preview-price {
-  font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: var(--cafe-bronze, #6f5d3a);
-}
-
-/* ── Preview footer: Da Vinci illustration deco ─────────────────────────────── */
-
-/* Positioned outside the aside so the aside's opacity-transition (on item change)
-   never hides the deco — it stays fixed regardless of which dish is selected */
-.cafe-menu__preview-footer {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  width: 320px;
-  height: 260px;
-  overflow: hidden;
-  pointer-events: none;
-  z-index: 0;
-}
-
-/* Da Vinci illustration — mirrors the #nosotros deco in ristorante.css:717-730 */
-.cafe-menu__preview-deco {
-  display: block;
-  width: 100%;
-  height: 100%;
-  background-color: #c9bfa3;
-  -webkit-mask: url("../../img/Illustrations/Davinci.svg") no-repeat top center / 80%;
-  mask: url("../../img/Illustrations/Davinci.svg") no-repeat top center / 80%;
-  opacity: 0.62;
-}
-
 /* ── Desktop: larger text ───────────────────────────────────────────────────── */
 @media (min-width: 901px) {
   .cafe-menu__cat       { font-size: 0.92rem; }
@@ -811,8 +783,6 @@
   .cafe-menu__item-desc { font-size: 0.78rem; }
   .cafe-menu__item-price { font-size: 1.05rem; }
   .cafe-menu__preview-name  { font-size: 1.25rem; }
-  .cafe-menu__preview-desc  { font-size: 0.82rem; }
-  .cafe-menu__preview-price { font-size: 1.7rem; }
   .cafe-menu__preview-media { height: 290px; }
 }
 
@@ -821,7 +791,6 @@
   .menu-modal--cafe .menu-modal__panel  { max-width: 720px; }
   .menu-modal--cafe .cafe-menu          { grid-template-columns: 1fr 240px; }
   .cafe-menu__preview-media             { height: 200px; }
-  .cafe-menu__preview-footer            { width: 240px; height: 210px; }
 }
 
 /* ── Mobile: list only; preview = overlay on tap ────────────────────────────── */
@@ -843,9 +812,6 @@
   .cafe-menu__item--no-photo:hover,
   .cafe-menu__item--no-photo:focus-visible,
   .cafe-menu__item--no-photo.is-active { background: none; }
-
-  /* Hide the bottom decorative footer on mobile overlay — the social rail is already in the hero */
-  .cafe-menu__preview-footer { display: none; }
 
   /* Preview becomes a fixed overlay (hidden by default) */
   .cafe-menu__preview {
@@ -912,8 +878,6 @@
     box-shadow: 0 4px 16px rgba(74,63,48,0.15);
   }
   .cafe-menu__preview-name  { font-size: 1.1rem; color: var(--cafe-marron, #4a3f30); }
-  .cafe-menu__preview-desc  { font-size: 0.78rem; color: rgba(74,63,48,0.65); }
-  .cafe-menu__preview-price { font-size: 1.4rem; color: var(--cafe-bronze, #6f5d3a); }
 }
 
 /* ── Fade animation for camera badge ───────────────────────────────────────── */
@@ -1163,18 +1127,17 @@
 
 /* ================= NAV café ================= */
 .dv-nav--cafe {
-  background: transparent;
-}
-.dv-nav--cafe[data-scrolled="true"] {
   background: rgba(248, 243, 234, 0.92);
   backdrop-filter: blur(10px);
+}
+.dv-nav--cafe[data-scrolled="true"] {
   box-shadow: 0 1px 0 rgba(111, 93, 58, 0.16);
 }
 .dv-nav--cafe .dv-nav__word {
   font-family: var(--font-display);
   font-size: 1.4rem;
   letter-spacing: 0.16em;
-  color: #fff;
+  color: var(--cafe-accent);
 }
 .dv-nav--cafe .dv-nav__brand {
   gap: 0.55rem;
@@ -1185,7 +1148,7 @@
   display: inline-block;
   width: 11.5rem;
   height: 4rem;
-  background-color: #ece2cd;
+  background-color: #231f20;
   -webkit-mask-image: url("../../img/logos/DAVINCI CAFE.svg");
   mask-image: url("../../img/logos/DAVINCI CAFE.svg");
   -webkit-mask-size: contain;
@@ -1206,29 +1169,26 @@
     height: 3.1rem;
   }
 }
-.dv-nav--cafe[data-scrolled="true"] .dv-cafe-logo {
-  background-color: #231f20;
-}
 .dv-footer--cafe .dv-cafe-logo {
   background-color: #ece2cd;
 }
 
 .dv-nav--cafe .dv-cmark {
-  color: #fff;
+  color: var(--cafe-accent);
   display: inline-flex;
 }
 .dv-nav--cafe .dv-nav__link {
-  color: rgba(255, 255, 255, 0.92);
+  color: var(--cafe-marron);
 }
 .dv-nav--cafe .dv-lang {
-  color: #fff;
+  color: var(--cafe-bronze);
 }
 .dv-nav--cafe .dv-lang button.is-active {
   background: var(--cafe-accent);
   color: #f6f1e7;
 }
 .dv-nav--cafe .dv-burger {
-  color: #fff;
+  color: var(--cafe-marron);
 }
 .dv-nav--cafe .dv-nav__cta {
   background: var(--cafe-accent);
@@ -1236,20 +1196,6 @@
 }
 .dv-nav--cafe .dv-nav__cta:hover {
   filter: brightness(1.08);
-}
-/* estado sólido (tras scroll) → texto marrón sobre crema */
-.dv-nav--cafe[data-scrolled="true"] .dv-nav__word,
-.dv-nav--cafe[data-scrolled="true"] .dv-cmark {
-  color: var(--cafe-accent);
-}
-.dv-nav--cafe[data-scrolled="true"] .dv-nav__link {
-  color: var(--cafe-marron);
-}
-.dv-nav--cafe[data-scrolled="true"] .dv-lang {
-  color: var(--cafe-bronze);
-}
-.dv-nav--cafe[data-scrolled="true"] .dv-burger {
-  color: var(--cafe-marron);
 }
 .dv-mobile {
   background: var(--cafe-marron);
