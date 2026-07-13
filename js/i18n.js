@@ -122,7 +122,7 @@
       "cafe.h.title": "Horario",
       "cafe.h.d1": "Todos los días",
       "cafe.h.t1": "07:00 a. m. – 10:00 p. m.",
-      "cafe.u.title": "Maracaibo,\nEdo. Zulia",
+      "cafe.u.title": "Maracaibo, Edo. Zulia",
       "cafe.u.sub": "Cuatro sedes para encontrarnos. Te esperamos.",
 
       "footer.rist": "Ristorante",
