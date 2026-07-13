@@ -11,7 +11,8 @@
       "nav.restaurante": "Restaurante",
 
       "hero.kicker": "Restaurante Italiano · Maracaibo desde 1996",
-      "hero.title": "La calidez de Italia\nen cada plato",
+      "hero.title":
+        "Creamos experiencias memorables\nofreciendo lo mejor de la gastronomía italiana",
       "hero.sub":
         "Cocina italiana auténtica con mirada contemporánea. Recetas de todas las regiones de Italia, servidas con calidad, servicio y respeto.",
       "hero.cta1": "Reservar mesa",
@@ -64,8 +65,8 @@
       "horario.domh": "07:30 a. m. – 10:00 p. m.",
       "horario.juesab": "Jueves a Sábado",
       "horario.jueh": "07:30 a. m. – 11:00 p. m.",
-      "ubicanos.title": "Maracaibo, edo. Zulia",
-      "ubicanos.sub": "Visítanos en cualquiera de nuestras sedes.",
+      "ubicanos.title": "Maracaibo, Edo. Zulia",
+      "ubicanos.sub": "Visítanos en nuestra sede principal.",
 
       "cafe.divider": "También somos",
       "cafe.kicker": "Grupo Da Vinci",
@@ -105,7 +106,7 @@
 
       "cafe.hero.kicker":
         "Panadería artesanal · Repostería · Cafetería · Maracaibo",
-      "cafe.hero.title": "El momento más rico del día te espera aquí",
+      "cafe.hero.title": "Hecho con amor,\nhorneado con legado",
       "cafe.hero.sub":
         "Pan recién horneado, postres únicos y café de especialidad. Cuatro sedes en Maracaibo para que te quedes un poco más.",
       "cafe.hero.cta1": "Ver la carta",
@@ -121,7 +122,7 @@
       "cafe.h.title": "Horario",
       "cafe.h.d1": "Todos los días",
       "cafe.h.t1": "07:00 a. m. – 10:00 p. m.",
-      "cafe.u.title": "Maracaibo,\nedo. Zulia",
+      "cafe.u.title": "Maracaibo,\nEdo. Zulia",
       "cafe.u.sub": "Cuatro sedes para encontrarnos. Te esperamos.",
 
       "footer.rist": "Ristorante",
@@ -142,7 +143,8 @@
       "nav.restaurante": "Restaurant",
 
       "hero.kicker": "Italian Restaurant · Maracaibo since 1996",
-      "hero.title": "The warmth of Italy\nin every dish",
+      "hero.title":
+        "We create memorable experiences\noffering the best of Italian cuisine",
       "hero.sub":
         "Authentic Italian cuisine with a contemporary eye. Recipes from every region of Italy, served with quality, service and respect.",
       "hero.cta1": "Book a table",
@@ -196,7 +198,7 @@
       "horario.juesab": "Thursday to Saturday",
       "horario.jueh": "07:30 a.m. – 11:00 p.m.",
       "ubicanos.title": "Maracaibo, Zulia State",
-      "ubicanos.sub": "Visit us at any of our locations.",
+      "ubicanos.sub": "Visit us at our main location.",
 
       "cafe.divider": "We are also",
       "cafe.kicker": "Grupo Da Vinci",
@@ -235,7 +237,7 @@
         "We were born from a genuine desire to do things right — no shortcuts, no rush. Every loaf that leaves our oven and every pastry we prepare carries respect for the craft and love for the details that make all the difference.",
 
       "cafe.hero.kicker": "Artisan Bakery · Pastry · Coffee · Maracaibo",
-      "cafe.hero.title": "The best part of your day starts right here",
+      "cafe.hero.title": "Made with love,\nbaked with legacy",
       "cafe.hero.sub":
         "Freshly baked bread, unique pastries and specialty coffee. Four locations in Maracaibo — stay a little longer.",
       "cafe.hero.cta1": "See the menu",
@@ -272,7 +274,8 @@
       "nav.restaurante": "Ristorante",
 
       "hero.kicker": "Ristorante Italiano · Maracaibo dal 1996",
-      "hero.title": "Il calore dell’Italia in ogni piatto",
+      "hero.title":
+        "Creiamo esperienze memorabili\noffrendo il meglio della gastronomia italiana",
       "hero.sub":
         "Autentica cucina italiana con uno sguardo contemporaneo. Ricette da ogni regione d’Italia, servite con qualità, servizio e rispetto.",
       "hero.cta1": "Prenota un tavolo",
@@ -319,7 +322,7 @@
       "horario.juesab": "Giovedì a Sabato",
       "horario.jueh": "07:30 – 23:00",
       "ubicanos.title": "Maracaibo, Stato Zulia",
-      "ubicanos.sub": "Vieni a trovarci in una delle nostre sedi.",
+      "ubicanos.sub": "Vieni a trovarci nella nostra sede principale.",
 
       "cafe.divider": "Siamo anche",
       "cafe.kicker": "Grupo Da Vinci",
@@ -359,7 +362,7 @@
 
       "cafe.hero.kicker":
         "Panetteria artigianale · Pasticceria · Caffetteria · Maracaibo",
-      "cafe.hero.title": "Il momento più bello della giornata\nti aspetta qui",
+      "cafe.hero.title": "Fatto con amore,\ninfornato con eredità",
       "cafe.hero.sub":
         "Pane appena sfornato, dolci unici e caffè speciale. Quattro sedi a Maracaibo per farti restare un po' di più.",
       "cafe.hero.cta1": "Vedi il menù",
