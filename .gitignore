@@ -5,6 +5,9 @@ Thumbs.db
 dist/
 .astro/
 
+# Netlify CLI local state
+.netlify/
+
 # dependencies
 node_modules/
 
