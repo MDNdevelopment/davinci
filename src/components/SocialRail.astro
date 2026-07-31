@@ -1,0 +1,26 @@
+---
+import Icon from "./Icon.astro";
+
+interface SocialLink {
+  icon: "instagram" | "facebook-f" | "youtube" | "tiktok";
+  href: string;
+  label: string;
+}
+
+interface Props {
+  class?: string;
+  links: SocialLink[];
+}
+
+const { class: className, links } = Astro.props;
+---
+
+<div class={className}>
+  {
+    links.map((link) => (
+      <a href={link.href} target="_blank" rel="noopener" aria-label={link.label}>
+        <Icon name={link.icon} class="icon" />
+      </a>
+    ))
+  }
+</div>

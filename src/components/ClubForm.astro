@@ -1,0 +1,51 @@
+---
+// The Clientify superform script injects its markup (including an
+// unlabeled <iframe>) into the page at runtime under an element keyed by
+// form id, not inside .club-form-container. This component relocates it
+// and gives the injected iframe an accessible title (Lighthouse
+// `frame-title`), since we can't add one at source.
+---
+
+<div class="club-form-container reveal">
+  <script
+    is:inline
+    type="text/javascript"
+    src="https://api.clientify.net/web-marketing/superforms/script/123368.js"
+  ></script>
+  <script is:inline>
+    (function () {
+      var target = document.querySelector(".club-form-container");
+      if (!target) return;
+      var ids = ["123368", "30754"];
+      var moved = false;
+
+      function labelIframe(node) {
+        var frame = node.querySelector("iframe:not([title])");
+        if (frame) frame.setAttribute("title", "Formulario de registro Club Da Vinci");
+      }
+
+      function tryMove() {
+        if (moved) return true;
+        for (var i = 0; i < ids.length; i++) {
+          var node = document.getElementById(ids[i]);
+          if (node && node.children.length > 0) {
+            target.appendChild(node);
+            labelIframe(node);
+            moved = true;
+            return true;
+          }
+        }
+        return false;
+      }
+
+      if (tryMove()) return;
+      var obs = new MutationObserver(function () {
+        if (tryMove()) obs.disconnect();
+      });
+      obs.observe(document.body, { childList: true, subtree: true });
+      setTimeout(function () {
+        obs.disconnect();
+      }, 15000);
+    })();
+  </script>
+</div>
