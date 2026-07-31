@@ -1,0 +1,109 @@
+---
+interface HourRow {
+  labelI18n: string;
+  labelText: string;
+  valueI18n: string;
+  valueText: string;
+}
+
+interface Sede {
+  href: string;
+  name: string;
+  suffix?: string;
+  address: string;
+}
+
+interface Props {
+  id: string;
+  variant: "ristorante" | "cafe";
+  kickerI18n: string;
+  kickerText: string;
+  titleI18n: string;
+  titleText: string;
+  hours: HourRow[];
+  mapTitle: string;
+  mapSrc: string;
+  headingI18n: string;
+  headingText: string;
+  subI18n: string;
+  subText: string;
+  subColor: string;
+  sedes: Sede[];
+}
+
+const {
+  id,
+  variant,
+  kickerI18n,
+  kickerText,
+  titleI18n,
+  titleText,
+  hours,
+  mapTitle,
+  mapSrc,
+  headingI18n,
+  headingText,
+  subI18n,
+  subText,
+  subColor,
+  sedes,
+} = Astro.props;
+
+const sectionClass = variant === "cafe" ? "sec dv-visit dv-visit--cafe" : "sec dv-visit";
+const dotClass = variant === "cafe" ? "dv-sede__dot dv-sede__dot--cafe" : "dv-sede__dot dv-sede__dot--rist";
+---
+
+<section class={sectionClass} id={id}>
+  <div class="dv-visit__head reveal">
+    <span class="kicker" data-i18n={kickerI18n}>{kickerText}</span>
+    <h2 class="h-display" data-i18n={titleI18n}>{titleText}</h2>
+  </div>
+  <div class="dv-hours reveal">
+    {
+      hours.map((hour) => (
+        <div class="dv-hour">
+          <span data-i18n={hour.labelI18n}>{hour.labelText}</span>
+          <strong data-i18n={hour.valueI18n}>{hour.valueText}</strong>
+        </div>
+      ))
+    }
+  </div>
+  <div class="wrap dv-visit__grid">
+    <div class="dv-map reveal">
+      <iframe title={mapTitle} src={mapSrc} loading="lazy"></iframe>
+    </div>
+    <div class="reveal">
+      <h3
+        class="h-display"
+        style={`white-space: pre-line; font-size: 1.9rem; margin-bottom: 0.5rem`}
+        data-i18n={headingI18n}
+      >
+        {headingText}
+      </h3>
+      <p style={`color: ${subColor}; margin-bottom: 1.4rem`} data-i18n={subI18n}>
+        {subText}
+      </p>
+      <div class="dv-sedes">
+        {
+          sedes.map((sede) => (
+            <a class="dv-sede" href={sede.href} target="_blank" rel="noopener">
+              <span class={dotClass} />
+              <div>
+                <h4>
+                  {sede.name}
+                  {sede.suffix && (
+                    <>
+                      {" "}
+                      <small>· {sede.suffix}</small>
+                    </>
+                  )}
+                </h4>
+                <p>{sede.address}</p>
+              </div>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>
