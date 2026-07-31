@@ -1,0 +1,409 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Nav from "../components/Nav.astro";
+import LangSwitcher from "../components/LangSwitcher.astro";
+import SocialRail from "../components/SocialRail.astro";
+import Footer from "../components/Footer.astro";
+import ClubForm from "../components/ClubForm.astro";
+import VisitSection from "../components/VisitSection.astro";
+import Icon from "../components/Icon.astro";
+import structuredData from "../data/cafe-structured-data.json";
+import "../styles/cafe.css";
+import "../styles/components/cafe.css";
+import "../styles/components/menu-modal.css";
+
+const navLinks = [
+  { href: "#carta", i18nKey: "cafe.menu.kicker", label: "Nuestra carta" },
+  { href: "#menu", label: "Menú", dataAttr: "data-cafe-menu-open" },
+  { href: "index.html", i18nKey: "nav.restaurante", label: "Restaurante", class: "dv-nav__link--rist" },
+  { href: "#espacio", i18nKey: "cafe.gallery.kicker", label: "Nuestro espacio" },
+  { href: "#visita", i18nKey: "cafe.h.kicker", label: "Ubícanos" },
+];
+
+const heroSlides = [
+  { file: "Davinci cafe hero 2.webp", extraClass: "dv-hero__slide--right is-active" },
+  { file: "Davinci cafe hero 1.webp" },
+  { file: "Davinci cafe hero 3.webp" },
+  { file: "Davinci cafe hero 5.webp", extraClass: "dv-hero__slide--right" },
+  { file: "Davinci cafe hero 4.webp" },
+];
+
+const heroSocialLinks = [
+  { icon: "instagram" as const, href: "https://www.instagram.com/davincicafe.ve/", label: "Instagram" },
+  { icon: "tiktok" as const, href: "https://www.tiktok.com/@grupodavinci", label: "TikTok" },
+  { icon: "whatsapp" as const, href: "https://api.whatsapp.com/send/?phone=584122994586", label: "WhatsApp" },
+];
+
+const footerSocialLinks = [
+  { icon: "instagram" as const, href: "https://www.instagram.com/davincicafe.ve/", label: "Instagram" },
+  { icon: "tiktok" as const, href: "https://www.tiktok.com/@grupodavinci", label: "TikTok" },
+];
+
+const BAKE_CATEGORIES = [
+  { cat: "Panini", titleI18n: "cafe.m1", title: "Panes artesanales", descI18n: "cafe.m1d", desc: "Masa madre, horneado del día." },
+  { cat: "Empanadas Horneadas o Integrales", titleI18n: "cafe.m2", title: "Desayunos", descI18n: "cafe.m2d", desc: "Para empezar el día como se debe." },
+  { cat: "Promos", titleI18n: "cafe.m3", title: "Repostería", descI18n: "cafe.m3d", desc: "Postres únicos, dulces de la casa." },
+  { cat: "Infusiones 14 oz", titleI18n: "cafe.m4", title: "Bebidas", descI18n: "cafe.m4d", desc: "Infusiones, jugos y bebidas frías." },
+  { cat: "Café Frío 14 oz", titleI18n: "cafe.m5", title: "Variedad de cafés", descI18n: "cafe.m5d", desc: "Espresso, latte art y café recién hecho." },
+];
+
+const GALLERY_FILES = [1, 2, 3, 4, 6, 8, 9, 5, 10, 11, 12, 7, 13];
+
+const SCALLOP_PATH =
+  "M99.72 50.00L99.55 51.42L99.05 52.80L98.25 54.14L97.18 55.41L95.90 56.60L94.47 57.70L92.96 58.71L91.44 59.64L89.97 60.51L88.62 61.34L87.45 62.17L86.48 63.02L85.75 63.92L85.27 64.90L85.03 66.00L85.02 67.22L85.19 68.57L85.50 70.05L85.90 71.65L86.33 73.35L86.72 75.11L87.03 76.90L87.18 78.67L87.15 80.38L86.89 81.97L86.39 83.39L85.63 84.63L84.63 85.63L83.39 86.39L81.97 86.89L80.38 87.15L78.67 87.18L76.90 87.03L75.11 86.72L73.35 86.33L71.65 85.90L70.05 85.50L68.57 85.19L67.22 85.02L66.00 85.03L64.90 85.27L63.92 85.75L63.02 86.48L62.17 87.45L61.34 88.62L60.51 89.97L59.64 91.44L58.71 92.96L57.70 94.47L56.60 95.90L55.41 97.18L54.14 98.25L52.80 99.05L51.42 99.55L50.00 99.72L48.58 99.55L47.20 99.05L45.86 98.25L44.59 97.18L43.40 95.90L42.30 94.47L41.29 92.96L40.36 91.44L39.49 89.97L38.66 88.62L37.83 87.45L36.98 86.48L36.08 85.75L35.10 85.27L34.00 85.03L32.78 85.02L31.43 85.19L29.95 85.50L28.35 85.90L26.65 86.33L24.89 86.72L23.10 87.03L21.33 87.18L19.62 87.15L18.03 86.89L16.61 86.39L15.37 85.63L14.37 84.63L13.61 83.39L13.11 81.97L12.85 80.38L12.82 78.67L12.97 76.90L13.28 75.11L13.67 73.35L14.10 71.65L14.50 70.05L14.81 68.57L14.98 67.22L14.97 66.00L14.73 64.90L14.25 63.92L13.52 63.02L12.55 62.17L11.38 61.34L10.03 60.51L8.56 59.64L7.04 58.71L5.53 57.70L4.10 56.60L2.82 55.41L1.75 54.14L0.95 52.80L0.45 51.42L0.28 50.00L0.45 48.58L0.95 47.20L1.75 45.86L2.82 44.59L4.10 43.40L5.53 42.30L7.04 41.29L8.56 40.36L10.03 39.49L11.38 38.66L12.55 37.83L13.52 36.98L14.25 36.08L14.73 35.10L14.97 34.00L14.98 32.78L14.81 31.43L14.50 29.95L14.10 28.35L13.67 26.65L13.28 24.89L12.97 23.10L12.82 21.33L12.85 19.62L13.11 18.03L13.61 16.61L14.37 15.37L15.37 14.37L16.61 13.61L18.03 13.11L19.62 12.85L21.33 12.82L23.10 12.97L24.89 13.28L26.65 13.67L28.35 14.10L29.95 14.50L31.43 14.81L32.78 14.98L34.00 14.97L35.10 14.73L36.08 14.25L36.98 13.52L37.83 12.55L38.66 11.38L39.49 10.03L40.36 8.56L41.29 7.04L42.30 5.53L43.40 4.10L44.59 2.82L45.86 1.75L47.20 0.95L48.58 0.45L50.00 0.28L51.42 0.45L52.80 0.95L54.14 1.75L55.41 2.82L56.60 4.10L57.70 5.53L58.71 7.04L59.64 8.56L60.51 10.03L61.34 11.38L62.17 12.55L63.02 13.52L63.92 14.25L64.90 14.73L66.00 14.97L67.22 14.98L68.57 14.81L70.05 14.50L71.65 14.10L73.35 13.67L75.11 13.28L76.90 12.97L78.67 12.82L80.38 12.85L81.97 13.11L83.39 13.61L84.63 14.37L85.63 15.37L86.39 16.61L86.89 18.03L87.15 19.62L87.18 21.33L87.03 23.10L86.72 24.89L86.33 26.65L85.90 28.35L85.50 29.95L85.19 31.43L85.02 32.78L85.03 34.00L85.27 35.10L85.75 36.08L86.48 36.98L87.45 37.83L88.62 38.66L89.97 39.49L91.44 40.36L92.96 41.29L94.47 42.30L95.90 43.40L97.18 44.59L98.25 45.86L99.05 47.20L99.55 48.58L99.72 50.00Z";
+const SEAL_PATH =
+  "M97.47 50.00L97.06 51.34L95.95 52.63L94.48 53.82L93.10 54.94L92.19 56.07L92.00 57.27L92.52 58.61L93.49 60.11L94.52 61.70L95.17 63.26L95.15 64.67L94.34 65.82L92.89 66.70L91.13 67.38L89.46 68.02L88.25 68.81L87.70 69.89L87.77 71.33L88.23 73.06L88.72 74.88L88.86 76.58L88.41 77.91L87.28 78.75L85.63 79.14L83.74 79.24L81.96 79.33L80.57 79.71L79.71 80.57L79.33 81.96L79.24 83.74L79.14 85.63L78.75 87.28L77.91 88.41L76.58 88.86L74.88 88.72L73.06 88.23L71.33 87.77L69.89 87.70L68.81 88.25L68.02 89.46L67.38 91.13L66.70 92.89L65.82 94.34L64.67 95.15L63.26 95.17L61.70 94.52L60.11 93.49L58.61 92.52L57.27 92.00L56.07 92.19L54.94 93.10L53.82 94.48L52.63 95.95L51.34 97.06L50.00 97.47L48.66 97.06L47.37 95.95L46.18 94.48L45.06 93.10L43.93 92.19L42.73 92.00L41.39 92.52L39.89 93.49L38.30 94.52L36.74 95.17L35.33 95.15L34.18 94.34L33.30 92.89L32.62 91.13L31.98 89.46L31.19 88.25L30.11 87.70L28.67 87.77L26.94 88.23L25.12 88.72L23.42 88.86L22.09 88.41L21.25 87.28L20.86 85.63L20.76 83.74L20.67 81.96L20.29 80.57L19.43 79.71L18.04 79.33L16.26 79.24L14.37 79.14L12.72 78.75L11.59 77.91L11.14 76.58L11.28 74.88L11.77 73.06L12.23 71.33L12.30 69.89L11.75 68.81L10.54 68.02L8.87 67.38L7.11 66.70L5.66 65.82L4.85 64.67L4.83 63.26L5.48 61.70L6.51 60.11L7.48 58.61L8.00 57.27L7.81 56.07L6.90 54.94L5.52 53.82L4.05 52.63L2.94 51.34L2.53 50.00L2.94 48.66L4.05 47.37L5.52 46.18L6.90 45.06L7.81 43.93L8.00 42.73L7.48 41.39L6.51 39.89L5.48 38.30L4.83 36.74L4.85 35.33L5.66 34.18L7.11 33.30L8.87 32.62L10.54 31.98L11.75 31.19L12.30 30.11L12.23 28.67L11.77 26.94L11.28 25.12L11.14 23.42L11.59 22.09L12.72 21.25L14.37 20.86L16.26 20.76L18.04 20.67L19.43 20.29L20.29 19.43L20.67 18.04L20.76 16.26L20.86 14.37L21.25 12.72L22.09 11.59L23.42 11.14L25.12 11.28L26.94 11.77L28.67 12.23L30.11 12.30L31.19 11.75L31.98 10.54L32.62 8.87L33.30 7.11L34.18 5.66L35.33 4.85L36.74 4.83L38.30 5.48L39.89 6.51L41.39 7.48L42.73 8.00L43.93 7.81L45.06 6.90L46.18 5.52L47.37 4.05L48.66 2.94L50.00 2.53L51.34 2.94L52.63 4.05L53.82 5.52L54.94 6.90L56.07 7.81L57.27 8.00L58.61 7.48L60.11 6.51L61.70 5.48L63.26 4.83L64.67 4.85L65.82 5.66L66.70 7.11L67.38 8.87L68.02 10.54L68.81 11.75L69.89 12.30L71.33 12.23L73.06 11.77L74.88 11.28L76.58 11.14L77.91 11.59L78.75 12.72L79.14 14.37L79.24 16.26L79.33 18.04L79.71 19.43L80.57 20.29L81.96 20.67L83.74 20.76L85.63 20.86L87.28 21.25L88.41 22.09L88.86 23.42L88.72 25.12L88.23 26.94L87.77 28.67L87.70 30.11L88.25 31.19L89.46 31.98L91.13 32.62L92.89 33.30L94.34 34.18L95.15 35.33L95.17 36.74L94.52 38.30L93.49 39.89L92.52 41.39L92.00 42.73L92.19 43.93L93.10 45.06L94.48 46.18L95.95 47.37L97.06 48.66L97.47 50.00Z";
+---
+
+<BaseLayout
+  title="Da Vinci Café — Panadería artesanal y cafetería en Maracaibo"
+  description="Da Vinci Café Maracaibo — Panadería artesanal, repostería y cafetería. Panes de masa madre, postres únicos y desayunos excepcionales en 4 sedes."
+  canonical="https://davinciristorante.com.ve/cafe.html"
+  hreflangs={[
+    { hreflang: "es", href: "https://davinciristorante.com.ve/cafe.html" },
+    { hreflang: "en", href: "https://davinciristorante.com.ve/cafe.html" },
+    { hreflang: "it", href: "https://davinciristorante.com.ve/cafe.html" },
+    { hreflang: "x-default", href: "https://davinciristorante.com.ve/cafe.html" },
+  ]}
+  alternatePage={{ href: "https://davinciristorante.com.ve/", title: "Da Vinci Ristorante" }}
+  ogImage="https://davinciristorante.com.ve/img/cafe/hero/Davinci%20cafe%20hero%201.webp"
+  siteName="Da Vinci Café · Grupo Da Vinci"
+  bodyClass="dv-app dv-app--cafe"
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(structuredData)} />
+  </Fragment>
+
+  <Nav
+    variant="cafe"
+    logoLabel="Da Vinci Café"
+    links={navLinks}
+    cta={{ href: "https://www.instagram.com/davincicafe.ve/", i18nKey: "cafe.cta2", label: "Síguenos" }}
+  >
+    <LangSwitcher slot="lang" />
+    <LangSwitcher slot="lang-mobile" mobile />
+  </Nav>
+
+  <!-- ===== HERO ===== -->
+  <header class="dv-chero" id="inicio">
+    <div class="dv-hero__slides">
+      {
+        heroSlides.map((slide) => (
+          <div
+            class={["dv-hero__slide", slide.extraClass].filter(Boolean).join(" ")}
+            style={`background-image: url("/img/cafe/hero/${slide.file}");`}
+          />
+        ))
+      }
+    </div>
+    <div class="dv-chero__inner">
+      <span class="dv-chero__kicker" data-i18n="cafe.hero.kicker"
+        >Panadería artesanal · Repostería · Cafetería · Maracaibo</span
+      >
+      <h1 class="dv-chero__title" data-i18n="cafe.hero.title">Hecho con amor,<br />horneado con legado</h1>
+      <p class="dv-chero__sub" data-i18n="cafe.hero.sub">
+        Pan recién horneado, postres únicos y café recién hecho. Cuatro sedes
+        en Maracaibo para que te quedes un poco más.
+      </p>
+      <div class="dv-chero__actions">
+        <a class="btn btn--cafe" href="#menu" data-cafe-menu-open data-i18n="cafe.hero.cta1">Ver la carta</a>
+        <a class="btn btn--cafe-ghost" href="#visita" data-i18n="cafe.hero.cta2">Ubícanos</a>
+      </div>
+    </div>
+    <SocialRail class="dv-csocial" links={heroSocialLinks} />
+    <div class="dv-hero__dots">
+      <button class="is-active" aria-label="Slide 1"></button>
+      <button aria-label="Slide 2"></button>
+      <button aria-label="Slide 3"></button>
+      <button aria-label="Slide 4"></button>
+      <button aria-label="Slide 5"></button>
+    </div>
+  </header>
+
+  <!-- ===== ESENCIA / ABOUT ===== -->
+  <section class="sec dv-cabout" id="esencia">
+    <div class="wrap dv-cabout__grid">
+      <div class="dv-cabout__media reveal">
+        <div class="dv-cabout__art">
+          <span class="dv-shape dv-cabout__s dv-cabout__s--scallop" style="width: 168px; height: 168px" aria-hidden="true">
+            <svg viewBox="0 0 100 100" width="100%" height="100%"><path d={SCALLOP_PATH} fill="#a3bd78" /></svg>
+          </span>
+          <span class="dv-shape dv-cabout__s dv-cabout__s--circle" style="width: 94px; height: 94px" aria-hidden="true">
+            <svg viewBox="0 0 100 100" width="100%" height="100%"><circle cx="50" cy="50" r="48" fill="#8073AE" /></svg>
+          </span>
+          <div class="dv-cabout__photo">
+            <img src="/img/cafe/Seccion Cafe.webp" alt="Da Vinci Café" loading="lazy" />
+          </div>
+          <span class="dv-shape dv-cabout__s dv-cabout__s--seal" style="width: 108px; height: 108px" aria-hidden="true">
+            <svg viewBox="0 0 100 100" width="100%" height="100%"><path d={SEAL_PATH} fill="#4d3f24" /></svg>
+            <span class="dv-shape__in">
+              <span class="dv-cabout__sealtxt">Café<small>Grupo Da Vinci</small></span>
+            </span>
+          </span>
+        </div>
+      </div>
+      <div class="reveal">
+        <span class="kicker" data-i18n="cafe.kicker">Grupo Da Vinci</span>
+        <h2 class="h-display" data-i18n="cafe.about.tagline">Una pasión artesanal con raíces de verdad</h2>
+        <p class="dv-lead" data-i18n="cafe.about.body">
+          Nacimos del deseo de hacer las cosas bien, sin atajos ni prisas. Cada
+          pan que sale del horno y cada postre que preparamos lleva el respeto
+          por el oficio y el amor por el detalle que marca la diferencia.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FILOSOFÍA ===== -->
+  <div class="dv-cafe__phil">
+    <div class="sec">
+      <div class="dv-cafe__phil-head reveal">
+        <span class="kicker" data-i18n="cafe.phil.kicker">Nuestra esencia</span>
+        <h2 class="h-display" data-i18n="cafe.phil.title">Nuestra filosofía</h2>
+      </div>
+      <div class="dv-cafe__phil-grid">
+        <div class="dv-cafe__phil-col reveal">
+          <h3 data-i18n="cafe.mision.heading">Misión</h3>
+          <p data-i18n="cafe.mision.body">
+            Ofrecer productos frescos, deliciosos y de alta calidad en cada
+            visita, combinando tradición y calidad en el arte de la
+            panadería, cafetería y repostería. Crear un ambiente acogedor
+            donde cada cliente se sienta como en casa.
+          </p>
+        </div>
+        <div class="dv-cafe__phil-col reveal">
+          <h3 data-i18n="cafe.vision.heading">Visión</h3>
+          <p data-i18n="cafe.vision.body">
+            Ser la referencia líder en la región para disfrutar de panes
+            artesanales, postres únicos y desayunos excepcionales, con una
+            experiencia cálida que inspire momentos de felicidad y conexión.
+          </p>
+        </div>
+        <div class="dv-cafe__phil-col reveal">
+          <h3 data-i18n="cafe.valores.heading">Valores</h3>
+          <p data-i18n="cafe.valores.body">Excelencia · Servicio sobresaliente · Respeto · Compromiso</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== CARTA ===== -->
+  <section class="sec dv-cafe__bake" id="carta">
+    <div class="dv-bakes-head reveal">
+      <span class="kicker" data-i18n="cafe.menu.kicker">Nuestra carta</span>
+      <h2 class="h-display" data-i18n="cafe.menu.title">Lo que preparamos</h2>
+    </div>
+    <div class="dv-bakes">
+      {
+        BAKE_CATEGORIES.map((bake) => (
+          <button class="dv-bake reveal" type="button" data-cafe-menu-cat={bake.cat}>
+            <h4 data-i18n={bake.titleI18n}>{bake.title}</h4>
+            <p data-i18n={bake.descI18n}>{bake.desc}</p>
+          </button>
+        ))
+      }
+    </div>
+    <div class="dv-bakes-cta reveal">
+      <button class="dv-bakes-cta__btn" type="button" data-cafe-menu-open>Ver menú completo</button>
+    </div>
+  </section>
+
+  <!-- ===== GALERÍA / NUESTRO ESPACIO ===== -->
+  <section class="dv-cgal" id="espacio">
+    <span class="dv-shape dv-cgal__deco" style="width: 220px; height: 220px" aria-hidden="true">
+      <svg viewBox="0 0 100 100" width="100%" height="100%"><path d={SCALLOP_PATH} fill="#ece2cd" /></svg>
+    </span>
+    <div class="dv-cgal__head reveal">
+      <span class="kicker" data-i18n="cafe.gallery.kicker">Nuestro espacio</span>
+      <h2 class="h-display" data-i18n="cafe.gallery.title">Momentos que saben a casa</h2>
+    </div>
+    <div class="marquee" aria-label="Galería Da Vinci Café">
+      <div class="marquee__row">
+        {
+          GALLERY_FILES.map((n) => (
+            <button class="tile" type="button" aria-label="Ambiente de Da Vinci Café">
+              <img src={`/img/cafe/Davinci cafe carousel ${n}.webp`} alt="" loading="lazy" />
+            </button>
+          ))
+        }
+        {
+          GALLERY_FILES.map((n) => (
+            <button class="tile" type="button" aria-hidden="true" tabindex="-1">
+              <img src={`/img/cafe/Davinci cafe carousel ${n}.webp`} alt="" loading="lazy" />
+            </button>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <div class="lightbox" data-open="false">
+    <button class="lightbox__close" aria-label="Cerrar">×</button>
+    <img class="lightbox__img" alt="" />
+  </div>
+
+  <!-- ===== CLUB DA VINCI ===== -->
+  <section class="sec dv-club dv-club--cafe" id="club">
+    <span class="dv-club__deco dv-club__deco--scallop" aria-hidden="true">
+      <svg viewBox="0 0 100 100" width="100%" height="100%"><path d={SCALLOP_PATH} fill="#b2c587" /></svg>
+    </span>
+    <span class="dv-club__deco dv-club__deco--circle" aria-hidden="true">
+      <svg viewBox="0 0 100 100" width="100%" height="100%"><circle cx="50" cy="50" r="48" fill="#8073ae" /></svg>
+    </span>
+    <span class="dv-club__deco dv-club__deco--seal" aria-hidden="true">
+      <svg viewBox="0 0 100 100" width="100%" height="100%"><path d={SEAL_PATH} fill="#6f5d3a" /></svg>
+    </span>
+    <div class="wrap dv-club__grid">
+      <div class="reveal">
+        <span class="kicker" data-i18n="club.kicker">Únete</span>
+        <h2 class="h-display" data-i18n="club.heading">Club Da Vinci</h2>
+        <p class="dv-club__sub" data-i18n="club.sub">
+          Beneficios, novedades e invitaciones exclusivas. Déjanos tus datos y
+          forma parte de la familia.
+        </p>
+        <div class="dv-club__survey">
+          <a href="https://forms.gle/xn25znAtfVtPn8Ti6" target="_blank" rel="noopener" data-i18n="club.cta"
+            >Completa nuestra encuesta de satisfacción →</a
+          >
+        </div>
+      </div>
+      <ClubForm />
+    </div>
+  </section>
+
+  <VisitSection
+    id="visita"
+    variant="cafe"
+    kickerI18n="cafe.h.kicker"
+    kickerText="Ubícanos"
+    titleI18n="cafe.h.title"
+    titleText="Horario"
+    hours={[
+      { labelI18n: "cafe.h.d1", labelText: "Todos los días", valueI18n: "cafe.h.t1", valueText: "07:00 a. m. – 10:00 p. m." },
+    ]}
+    mapTitle="Mapa Da Vinci Café"
+    mapSrc="https://www.google.com/maps/d/embed?mid=1J54zMKdY-m6NaBEE37M44GPNfvaR7fM&ehbc=2E312F&noprof=1"
+    headingI18n="cafe.u.title"
+    headingText="Maracaibo, Edo. Zulia"
+    subI18n="cafe.u.sub"
+    subText="Cuatro sedes para encontrarnos. Te esperamos."
+    subColor="#6a5e4c"
+    sedes={[
+      {
+        href: "https://www.google.com/maps/search/?api=1&query=Farmacia+Maraplus+Bella+Vista+Maracaibo+Venezuela",
+        name: "Da Vinci Café",
+        suffix: "Bella Vista",
+        address: "Av. 4 Bella Vista con calle 74, dentro de Farmacia Maraplus",
+      },
+      {
+        href: "https://maps.app.goo.gl/J3nRag9HEqZHiGjD9",
+        name: "Da Vinci Café",
+        suffix: "Norte",
+        address: "Calle 43, Av. 15, Urb. Rosal Sur, sector Fuerzas Armadas",
+      },
+      {
+        href: "https://maps.app.goo.gl/ef2HBMzeqhaH4UU29",
+        name: "Da Vinci Café",
+        suffix: "Cumbres",
+        address: "Dentro de Farmacia Maraplus, Cumbres de Maracaibo",
+      },
+      {
+        href: "https://maps.app.goo.gl/N6JBmWDNcqHzPVQZ9",
+        name: "Da Vinci Café",
+        suffix: "Indio Mara",
+        address: "Dentro de Farmacia Maraplus, Indio Mara",
+      },
+    ]}
+  />
+
+  <Footer
+    variant="cafe"
+    logoLabel="Da Vinci Café"
+    columns={[
+      {
+        heading: { i18nKey: "cafe.menu.kicker", label: "Nuestra carta" },
+        links: [
+          { href: "#carta", i18nKey: "cafe.menu.title", label: "Lo que horneamos" },
+          { href: "#esencia", i18nKey: "nav.nosotros", label: "Nosotros" },
+          { href: "#club", i18nKey: "club.heading", label: "Club Da Vinci" },
+        ],
+      },
+      {
+        heading: { i18nKey: "cafe.h.kicker", label: "Ubícanos" },
+        links: [
+          { href: "#visita", label: "Maracaibo, Zulia" },
+          { href: "https://www.instagram.com/davincicafe.ve/", label: "Instagram", external: true },
+          { href: "https://api.whatsapp.com/send/?phone=584122994586", label: "WhatsApp", external: true },
+        ],
+      },
+    ]}
+    socialLinks={footerSocialLinks}
+    tagline={{ i18nKey: "cafe.tagline", label: "El arte de lo artesanal, todos los días" }}
+  />
+
+  <!-- WhatsApp float — expandable sede picker -->
+  <div class="dv-wa-group" data-open="false">
+    <div class="dv-wa-menu" role="menu" aria-label="Elige una sede">
+      <p class="dv-wa-menu__title">Elige una sede</p>
+      <a class="dv-wa-menu__item" href="https://api.whatsapp.com/send/?phone=584128328065&text=%C2%A1Hola%20Da%20Vinci%20Caf%C3%A9%20Bella%20Vista!" target="_blank" rel="noopener">
+        <Icon name="whatsapp" class="icon" /><span>Bella Vista</span>
+      </a>
+      <a class="dv-wa-menu__item" href="https://api.whatsapp.com/send/?phone=584122697776&text=%C2%A1Hola%20Da%20Vinci%20Caf%C3%A9%20Norte!" target="_blank" rel="noopener">
+        <Icon name="whatsapp" class="icon" /><span>Norte · Fuerzas Armadas</span>
+      </a>
+      <a class="dv-wa-menu__item" href="https://api.whatsapp.com/send/?phone=584122182768&text=%C2%A1Hola%20Da%20Vinci%20Caf%C3%A9%20Cumbres!" target="_blank" rel="noopener">
+        <Icon name="whatsapp" class="icon" /><span>Cumbres</span>
+      </a>
+      <a class="dv-wa-menu__item" href="https://api.whatsapp.com/send/?phone=58422022257&text=%C2%A1Hola%20Da%20Vinci%20Caf%C3%A9%20Indio%20Mara!" target="_blank" rel="noopener">
+        <Icon name="whatsapp" class="icon" /><span>Indio Mara</span>
+      </a>
+    </div>
+    <button class="dv-wa dv-wa--toggle" type="button" aria-label="WhatsApp" aria-expanded="false">
+      <Icon name="whatsapp" class="icon" />
+    </button>
+  </div>
+
+  <!-- ===== CAFE MENU MODAL ===== -->
+  <div class="menu-modal menu-modal--cafe" id="cafe-menu-modal" hidden>
+    <div class="menu-modal__backdrop" data-cafe-menu-close></div>
+    <div class="menu-modal__panel" role="dialog" aria-modal="true" aria-labelledby="cafe-menu-modal-title">
+      <div class="cafe-menu__deco" aria-hidden="true">
+        <svg class="cafe-menu__deco-shape cafe-menu__deco-shape--scallop" viewBox="0 0 100 100"
+          ><path d={SCALLOP_PATH} fill="#b2c587" /></svg
+        >
+        <svg class="cafe-menu__deco-shape cafe-menu__deco-shape--seal" viewBox="0 0 100 100"
+          ><path d={SEAL_PATH} fill="#6f5d3a" /></svg
+        >
+      </div>
+      <button class="menu-modal__close" data-cafe-menu-close aria-label="Cerrar">×</button>
+      <h2 class="menu-modal__title" id="cafe-menu-modal-title">Nuestro Menú</h2>
+      <div class="menu-modal__tabs" role="tablist">
+        <button class="menu-modal__tab is-active" data-cafe-menu-tab="norte">Bella Vista / Fuerzas Armadas</button>
+        <button class="menu-modal__tab" data-cafe-menu-tab="sur">Indio Mara / Cumbres</button>
+      </div>
+      <div class="menu-modal__viewer cafe-menu">
+        <div class="cafe-menu__list" data-cafe-menu-list></div>
+        <aside class="cafe-menu__preview" data-cafe-menu-preview>
+          <button class="cafe-menu__preview-close" data-cafe-preview-close aria-label="Cerrar foto">×</button>
+          <div class="cafe-menu__preview-card">
+            <div class="cafe-menu__preview-media">
+              <img data-cafe-menu-preview-img alt="" loading="lazy" />
+            </div>
+            <h3 class="cafe-menu__preview-name" data-cafe-menu-preview-name></h3>
+          </div>
+        </aside>
+      </div>
+      <p class="cafe-menu__note">Precios incluyen IVA. No cobramos 10% de servicio.</p>
+    </div>
+  </div>
+
+  <script>
+    import "../scripts/i18n.js";
+    import "../scripts/nav.js";
+    import "../scripts/hero.js";
+    import "../scripts/gallery.js";
+    import "../scripts/reveal.js";
+    import "../scripts/cafe-menu-modal.js";
+    import "../scripts/wa-group.js";
+  </script>
+</BaseLayout>
