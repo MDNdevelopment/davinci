@@ -1,0 +1,121 @@
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Restaurant",
+            "@id": "https://davinciristorante.com.ve/#restaurant",
+            "name": "Da Vinci Ristorante",
+            "alternateName": "Da Vinci Ristorante",
+            "url": "https://davinciristorante.com.ve/",
+            "logo": "https://davinciristorante.com.ve/img/favicon.ico",
+            "image": "https://davinciristorante.com.ve/img/Nueva%20web/Hero/Davinci%20hero%201.webp",
+            "description": "Restaurante italiano en Maracaibo desde 1996. Pastas artesanales, pizzas, antipastos, bodega de vinos y pastelería típica italiana servidas con calidad y respeto.",
+            "telephone": "+584120256382",
+            "servesCuisine": ["Italiana", "Italiana contemporánea"],
+            "priceRange": "$$",
+            "foundingDate": "1996",
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "Av. 11 entre calle 75 y 76",
+              "addressLocality": "Maracaibo",
+              "addressRegion": "Zulia",
+              "addressCountry": "VE"
+            },
+            "geo": {
+              "@type": "GeoCoordinates",
+              "latitude": "10.6560",
+              "longitude": "-71.6140"
+            },
+            "openingHoursSpecification": [
+              {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": ["Sunday", "Monday", "Tuesday", "Wednesday"],
+                "opens": "07:30",
+                "closes": "21:30"
+              },
+              {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": ["Thursday", "Friday", "Saturday"],
+                "opens": "07:30",
+                "closes": "23:00"
+              }
+            ],
+            "menu": "https://davinciristorante.com.ve/",
+            "reservationUrl": "https://api.whatsapp.com/send/?phone=584120256382",
+            "hasMap": "https://www.google.com/maps/search/?api=1&query=Av.+11+entre+calles+75+y+76+Maracaibo+Venezuela",
+            "sameAs": [
+              "https://www.instagram.com/davincimcbo/",
+              "https://es-la.facebook.com/DaVinciRestaurante/",
+              "https://www.youtube.com/channel/UCRuQdtUVK3lYBx3yplDv7_g",
+              "https://www.tiktok.com/@grupodavinci"
+            ],
+            "parentOrganization": {
+              "@type": "Organization",
+              "@id": "https://davinciristorante.com.ve/#organization",
+              "name": "Grupo Da Vinci",
+              "url": "https://davinciristorante.com.ve/",
+              "sameAs": [
+                "https://www.instagram.com/davincimcbo/",
+                "https://es-la.facebook.com/DaVinciRestaurante/",
+                "https://www.tiktok.com/@grupodavinci"
+              ]
+            }
+          },
+          {
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "¿Dónde está ubicado Da Vinci Ristorante en Maracaibo?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Da Vinci Ristorante está en la Av. 11 entre calle 75 y 76, Maracaibo, estado Zulia, Venezuela. También contamos con Da Vinci Café en cuatro sedes: Bella Vista, Norte (Fuerzas Armadas), Cumbres e Indio Mara."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "¿Cuál es el horario de Da Vinci Ristorante?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "De domingo a miércoles abrimos de 7:30 a.m. a 9:30 p.m. y de jueves a sábado de 7:30 a.m. a 11:00 p.m."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "¿Cómo puedo reservar una mesa en Da Vinci Ristorante?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Puedes reservar por WhatsApp al +58 412 025 6382. Aceptamos reservas para desayunos, almuerzos, cenas y eventos especiales."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "¿Qué tipo de cocina sirve Da Vinci Ristorante?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Ofrecemos cocina italiana auténtica con mirada contemporánea: antipastos, pastas artesanales, pizzas, risottos, platos de todas las regiones de Italia, bodega de vinos y pastelería típica. Abrimos en Maracaibo desde 1996."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "¿Da Vinci Ristorante realiza eventos privados?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Sí, contamos con salones para eventos privados, celebraciones y cenas empresariales en Maracaibo. Contáctanos por WhatsApp al +58 412 025 6382."
+                }
+              }
+            ]
+          },
+          {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Inicio",
+                "item": "https://davinciristorante.com.ve/"
+              }
+            ]
+          }
+        ]
+      }

@@ -1,19 +1,377 @@
 ---
-// Placeholder scaffold page — replaced with the full Da Vinci Ristorante
-// markup in Phase 2 of the Astro migration (see legacy/index.html for
-// reference).
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Nav from "../components/Nav.astro";
+import LangSwitcher from "../components/LangSwitcher.astro";
+import SocialRail from "../components/SocialRail.astro";
+import Footer from "../components/Footer.astro";
+import ClubForm from "../components/ClubForm.astro";
+import VisitSection from "../components/VisitSection.astro";
+import Icon from "../components/Icon.astro";
+import structuredData from "../data/index-structured-data.json";
+import "../styles/ristorante.css";
+import "../styles/components/menu-modal.css";
+import "../styles/components/video-modal.css";
+
+const navLinks = [
+  { href: "#inicio", i18nKey: "nav.inicio", label: "Inicio" },
+  { href: "cafe.html", i18nKey: "nav.cafe", label: "Café" },
+  { href: "#menu-modal", i18nKey: "nav.menu", label: "Menú", dataAttr: "data-menu-open" },
+  { href: "#nosotros", i18nKey: "nav.nosotros", label: "Nosotros" },
+  { href: "#club", i18nKey: "nav.club", label: "Club" },
+  { href: "#ubicanos", i18nKey: "nav.ubicanos", label: "Ubícanos" },
+];
+
+const RESERVE_URL =
+  "https://api.whatsapp.com/send/?phone=584120256382&type=phone_number&app_absent=0&text=%C2%A1Bienvenido%20a%20nuestro%20ristorante%21%20A%20trav%C3%A9s%20de%20ac%C3%A1%20podr%C3%A1s%20realizar%20la%20reservaci%C3%B3n%20para%20tu%20desayuno%2C%20almuerzo%2C%20cena%20o%20evento%20especial.";
+
+const socialLinks = [
+  { icon: "instagram" as const, href: "https://www.instagram.com/davincimcbo/", label: "Instagram" },
+  { icon: "facebook-f" as const, href: "https://es-la.facebook.com/DaVinciRestaurante/", label: "Facebook" },
+  { icon: "youtube" as const, href: "https://www.youtube.com/channel/UCRuQdtUVK3lYBx3yplDv7_g", label: "YouTube" },
+  { icon: "tiktok" as const, href: "https://www.tiktok.com/@grupodavinci", label: "TikTok" },
+];
+
+const MARQUEE_TILES = [
+  { file: "1", alt: "Ambiente del salón principal de Da Vinci Ristorante Maracaibo" },
+  { file: "2", alt: "Cocina italiana auténtica en Da Vinci Ristorante Maracaibo" },
+  { file: "8", alt: "Da Vinci Ristorante desde 1996, cocina italiana en Maracaibo" },
+  { file: "5", alt: "Pasta artesanal del restaurante italiano Da Vinci en Maracaibo" },
+  { file: "7", alt: "Gastronomía italiana y vinos en Da Vinci Maracaibo" },
+  { file: "4", alt: "Platos italianos artesanales Da Vinci Maracaibo" },
+];
 ---
 
-<html lang="es">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/x-icon" href="/img/favicon.ico" />
-		<link rel="apple-touch-icon" href="/img/apple-touch-icon.png" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Da Vinci Ristorante — Astro scaffold</title>
-	</head>
-	<body>
-		<h1>Astro scaffold running — pages migrated in later phases</h1>
-	</body>
-</html>
+<BaseLayout
+  title="Da Vinci Ristorante — Restaurante italiano en Maracaibo desde 1996"
+  description="Restaurante italiano en Maracaibo desde 1996. Pastas artesanales, pizzas y gastronomía italiana auténtica. Reserva tu mesa por WhatsApp."
+  canonical="https://davinciristorante.com.ve/"
+  hreflangs={[
+    { hreflang: "es", href: "https://davinciristorante.com.ve/" },
+    { hreflang: "en", href: "https://davinciristorante.com.ve/" },
+    { hreflang: "it", href: "https://davinciristorante.com.ve/" },
+    { hreflang: "x-default", href: "https://davinciristorante.com.ve/" },
+  ]}
+  alternatePage={{ href: "https://davinciristorante.com.ve/cafe.html", title: "Da Vinci Café" }}
+  ogImage="https://davinciristorante.com.ve/img/Nueva%20web/Hero/Davinci%20hero%201.webp"
+  siteName="Da Vinci Ristorante"
+  localeAlternates={["en_US", "it_IT"]}
+  googleSiteVerification="sGnjUJVGym6l1gNhsqKlrw0AMd5bKHVE6W2g7Ga9vto"
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(structuredData)} />
+  </Fragment>
+
+  <Nav
+    variant="ristorante"
+    logoLabel="Da Vinci Ristorante"
+    links={navLinks}
+    cta={{ href: RESERVE_URL, i18nKey: "hero.cta1", label: "Reservar mesa" }}
+  >
+    <LangSwitcher slot="lang" />
+    <LangSwitcher slot="lang-mobile" mobile />
+  </Nav>
+
+  <!-- ===== HERO ===== -->
+  <header class="dv-hero" id="inicio">
+    <div class="dv-hero__slides">
+      <div
+        class="dv-hero__slide dv-hero__slide--video is-active"
+        style={`background-image: url("/img/Nueva web/Hero/Davingi Hero 3.webp");`}
+      >
+        <video
+          class="dv-hero__video"
+          data-hero-video
+          muted
+          playsinline
+          preload="auto"
+          poster="/img/Nueva web/Hero/Davingi Hero 3.webp"
+        >
+          <source src="/img/Hero davinci.mp4" type="video/mp4" />
+        </video>
+      </div>
+      <div
+        class="dv-hero__slide"
+        style={`background-image: url("/img/Nueva web/Hero/Davinci hero 1.webp");`}
+      >
+      </div>
+      <div
+        class="dv-hero__slide"
+        style={`background-image: url("/img/Nueva web/Hero/Davinci hero 2.webp");`}
+      >
+      </div>
+    </div>
+
+    <div class="dv-hero__inner">
+      <span class="dv-hero__kicker" data-i18n="hero.kicker"
+        >Restaurante Italiano · Maracaibo desde 1996</span
+      >
+      <h1 class="dv-hero__title" data-i18n="hero.title">
+        Creamos experiencias memorables<br />ofreciendo lo mejor de la
+        gastronomía italiana
+      </h1>
+      <p class="dv-hero__sub" data-i18n="hero.sub">
+        Cocina italiana auténtica con mirada contemporánea. Recetas de todas
+        las regiones de Italia, servidas con calidad, servicio y respeto.
+      </p>
+      <div class="dv-hero__actions">
+        <a class="btn btn--solid" href={RESERVE_URL} target="_blank" rel="noopener" data-i18n="hero.cta1"
+          >Reservar mesa</a
+        >
+        <a class="btn btn--ghost" href="#menu-modal" data-menu-open data-i18n="hero.cta2">Ver el menú</a>
+      </div>
+    </div>
+
+    <SocialRail class="dv-social" links={socialLinks} />
+
+    <div class="dv-hero__dots">
+      <button class="is-active" aria-label="Slide 1"></button>
+      <button aria-label="Slide 2"></button>
+      <button aria-label="Slide 3"></button>
+    </div>
+
+    <button class="dv-anniv" data-video-open aria-label="30 años de historia">
+      <span class="dv-anniv__years">30</span>
+      <span class="dv-anniv__label" data-i18n="hero.anniv">años de historia</span>
+      <span class="dv-anniv__play" aria-hidden="true">
+        <Icon name="play" class="icon" />
+      </span>
+    </button>
+  </header>
+
+  <!-- ===== GALLERY MARQUEE ===== -->
+  <section class="dv-gallery" id="galeria">
+    <div class="dv-gallery__clouds" aria-hidden="true">
+      <span class="cloud cloud--1"></span>
+      <span class="cloud cloud--2"></span>
+      <span class="cloud cloud--3"></span>
+      <span class="leaf"></span>
+    </div>
+    <div class="dv-gallery__head reveal">
+      <h2 class="h-display" data-i18n="gallery.title">Una mesa que se recuerda</h2>
+    </div>
+    <div class="marquee">
+      <div class="marquee__row">
+        {
+          MARQUEE_TILES.map((tile) => (
+            <button class="tile" aria-label={tile.alt}>
+              <img
+                src={`/img/Nueva web/marquesina/Davinci marquesina ${tile.file}.webp`}
+                loading="lazy"
+                alt={tile.alt}
+              />
+            </button>
+          ))
+        }
+        {
+          MARQUEE_TILES.map((tile) => (
+            <button class="tile" aria-label={tile.alt}>
+              <img
+                src={`/img/Nueva web/marquesina/Davinci marquesina ${tile.file}.webp`}
+                loading="lazy"
+                alt=""
+                aria-hidden="true"
+              />
+            </button>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== NOSOTROS ===== -->
+  <section class="sec dv-nosotros" id="nosotros">
+    <div class="dv-nosotros__deco" aria-hidden="true"></div>
+    <div class="dv-nosotros__clouds" aria-hidden="true">
+      <span class="cloud cloud--1"></span>
+      <span class="cloud cloud--2"></span>
+    </div>
+    <div class="wrap dv-nosotros__grid">
+      <div class="reveal">
+        <h2 class="h-display" data-i18n="nosotros.heading">Nosotros</h2>
+        <p class="dv-lead" data-i18n="nosotros.body">
+          Iniciamos operaciones en el año 1996 con el objetivo de presentar al
+          público marabino una propuesta diferente a la oferta rígida y
+          conservadora de cocina italiana en ese momento, aprovechando la
+          oportunidad de introducir un concepto que permitiese a nuestros
+          clientes combinar, por ejemplo, cualquiera de nuestras salsas con
+          las pastas de sus preferencias; además de desarrollar un menú que
+          permitiera encontrar en un solo lugar los platos más emblemáticos
+          de Italia, desde los clásicos antipastos, pastas y pizzas hasta la
+          bodega de vinos y pastelería típica.
+        </p>
+        <div class="dv-vals">
+          <div class="dv-val">
+            <h3 data-i18n="vision.heading">Visión</h3>
+            <p data-i18n="vision.body">
+              Ser el grupo emblemático de la gastronomía italiana en la región.
+            </p>
+          </div>
+          <div class="dv-val">
+            <h3 data-i18n="mision.heading">Misión</h3>
+            <p data-i18n="mision.body">Ofrecer la calidez de Italia en cada plato y en cada momento.</p>
+          </div>
+          <div class="dv-val">
+            <h3 data-i18n="garantia.heading">Garantía de marca</h3>
+            <p data-i18n="garantia.body">
+              Sabemos lo que hacemos y garantizamos experiencias memorables.
+            </p>
+          </div>
+          <div class="dv-val">
+            <h3 data-i18n="valores.heading">Valores</h3>
+            <p data-i18n="valores.body">Excelencia · Servicio sobresaliente · Respeto · Compromiso.</p>
+          </div>
+        </div>
+      </div>
+      <div class="dv-nosotros__media reveal">
+        <img src="/img/Nueva web/marquesina/Davinci marquesina 3.webp" alt="Ambiente Da Vinci Ristorante" />
+        <div class="dv-nosotros__badge">1996<small>Dal · Est.</small></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CLUB ===== -->
+  <section class="sec dv-club" id="club">
+    <div class="dv-club__bg"></div>
+    <div class="dv-club__clouds" aria-hidden="true">
+      <span class="cloud cloud--1"></span>
+      <span class="cloud cloud--2"></span>
+      <span class="cloud cloud--3"></span>
+    </div>
+    <div class="wrap dv-club__grid">
+      <div class="reveal">
+        <span class="kicker" data-i18n="club.kicker">Únete</span>
+        <h2 class="h-display" data-i18n="club.heading">Club Da Vinci</h2>
+        <p class="dv-club__sub" data-i18n="club.sub">
+          Beneficios, novedades e invitaciones exclusivas. Déjanos tus datos y
+          forma parte de la familia.
+        </p>
+        <div class="dv-club__survey">
+          <a href="https://forms.gle/xn25znAtfVtPn8Ti6" target="_blank" rel="noopener" data-i18n="club.cta"
+            >Completa nuestra encuesta de satisfacción →</a
+          >
+        </div>
+      </div>
+      <ClubForm />
+    </div>
+  </section>
+
+  <VisitSection
+    id="ubicanos"
+    variant="ristorante"
+    kickerI18n="horario.kicker"
+    kickerText="Visítanos"
+    titleI18n="horario.title"
+    titleText="Horario"
+    hours={[
+      {
+        labelI18n: "horario.dommier",
+        labelText: "Domingo a Miércoles",
+        valueI18n: "horario.domh",
+        valueText: "07:30 a. m. – 10:00 p. m.",
+      },
+      {
+        labelI18n: "horario.juesab",
+        labelText: "Jueves a Sábado",
+        valueI18n: "horario.jueh",
+        valueText: "07:30 a. m. – 11:00 p. m.",
+      },
+    ]}
+    mapTitle="Mapa Da Vinci"
+    mapSrc="https://www.google.com/maps/d/embed?mid=1GwPzsBF3ltutrd0LxsgIWvwK-D_P0Ic&ehbc=2E312F&noprof=1"
+    headingI18n="ubicanos.title"
+    headingText="Maracaibo, Edo. Zulia"
+    subI18n="ubicanos.sub"
+    subText="Visítanos en nuestra sede principal."
+    subColor="#5f5e50"
+    sedes={[
+      {
+        href: "https://www.google.com/maps/search/?api=1&query=Av.+11+entre+calles+75+y+76+Maracaibo+Venezuela",
+        name: "Da Vinci Ristorante",
+        address: "Av. 11 entre calle 75 y 76, Maracaibo",
+      },
+    ]}
+  />
+
+  <Footer
+    variant="ristorante"
+    logoLabel="Da Vinci Ristorante"
+    columns={[
+      {
+        heading: { i18nKey: "footer.rist", label: "Ristorante" },
+        links: [
+          { href: "#nosotros", i18nKey: "nav.nosotros", label: "Nosotros" },
+          { href: "#menu-modal", i18nKey: "nav.menu", label: "Menú" },
+          { href: "#club", i18nKey: "nav.club", label: "Club" },
+        ],
+      },
+      {
+        heading: { i18nKey: "nav.ubicanos", label: "Ubícanos" },
+        links: [
+          { href: "#ubicanos", label: "Maracaibo, Zulia" },
+          { href: "https://api.whatsapp.com/send/?phone=584120256382", label: "WhatsApp", external: true },
+        ],
+      },
+    ]}
+    socialLinks={socialLinks}
+    tagline={{ i18nKey: "footer.tagline", label: "Grupo Da Vinci · Maracaibo, Venezuela" }}
+  />
+
+  <!-- ===== VIDEO MODAL ===== -->
+  <div class="video-modal" id="video-modal" hidden>
+    <div class="video-modal__backdrop" data-video-close></div>
+    <div class="video-modal__panel" role="dialog" aria-modal="true" aria-label="Da Vinci · 30 años de historia">
+      <button class="video-modal__close" data-video-close aria-label="Cerrar">×</button>
+      <div class="video-modal__frame" data-video-frame></div>
+    </div>
+  </div>
+
+  <!-- ===== MENU MODAL ===== -->
+  <div class="menu-modal" id="menu-modal" hidden>
+    <div class="menu-modal__backdrop" data-menu-close></div>
+    <div class="menu-modal__panel" role="dialog" aria-modal="true" aria-labelledby="menu-modal-title">
+      <button class="menu-modal__close" data-menu-close aria-label="Cerrar">×</button>
+      <h2 class="menu-modal__title" id="menu-modal-title">Nuestro Menú</h2>
+      <div class="menu-modal__viewer">
+        <div class="menu-modal__slides" data-menu-slides></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== LIGHTBOX ===== -->
+  <div class="lightbox" data-open="false">
+    <img src="" alt="Galería Da Vinci" />
+    <button class="lightbox__close" aria-label="Cerrar">×</button>
+  </div>
+
+  <!-- ===== WHATSAPP FLOAT ===== -->
+  <a
+    class="dv-wa"
+    href="https://api.whatsapp.com/send/?phone=584120256382&type=phone_number&app_absent=0&text=%C2%A1Hola%20Da%20Vinci!"
+    target="_blank"
+    rel="noopener"
+    aria-label="WhatsApp"
+  >
+    <Icon name="whatsapp" class="icon" />
+  </a>
+
+  <!-- ===== MUSIC BUTTON ===== -->
+  <button id="music-btn" class="play-music" aria-label="Música">
+    <img class="pause-img" src="/img/Simple_Music.-whitesvg.svg" alt="" />
+  </button>
+
+  <audio hidden controls autoplay id="bgMusic">
+    <source src="/italianmusic.mp3" type="audio/ogg" />
+  </audio>
+
+  <script>
+    import "../scripts/nav.js";
+    import "../scripts/hero.js";
+    import "../scripts/gallery.js";
+    import "../scripts/menu-modal.js";
+    import "../scripts/reveal.js";
+    import "../scripts/bgMusic.js";
+    import "../scripts/video-modal.js";
+    import "../scripts/i18n.js";
+    import "../scripts/meta-pixel.js";
+  </script>
+</BaseLayout>
