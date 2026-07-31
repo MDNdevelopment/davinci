@@ -1,0 +1,10 @@
+/* Sizing for the inline SVG icons (Icon.astro), which replace the Font
+   Awesome CDN <i class="fa-..."> elements. Mirrors Font Awesome's own
+   sizing convention so no other CSS (color/font-size-based) had to change. */
+.icon {
+  width: 1em;
+  height: 1em;
+  display: inline-block;
+  vertical-align: -0.125em;
+  fill: currentColor;
+}

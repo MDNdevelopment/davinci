@@ -1,0 +1,69 @@
+---
+import SocialRail from "./SocialRail.astro";
+import type { ComponentProps } from "astro/types";
+
+interface FooterLink {
+  href: string;
+  i18nKey?: string;
+  label: string;
+  external?: boolean;
+}
+
+interface FooterColumn {
+  heading: { i18nKey: string; label: string };
+  links: FooterLink[];
+}
+
+interface Props {
+  variant: "ristorante" | "cafe";
+  logoLabel: string;
+  columns: FooterColumn[];
+  socialLinks: ComponentProps<typeof SocialRail>["links"];
+  tagline: { i18nKey: string; label: string };
+}
+
+const { variant, logoLabel, columns, socialLinks, tagline } = Astro.props;
+const footerClass = variant === "cafe" ? "dv-footer dv-footer--cafe" : "dv-footer";
+const logoClass = variant === "cafe" ? "dv-cafe-logo dv-cafe-logo--lg" : "dv-rist-logo dv-rist-logo--lg";
+---
+
+<footer class={footerClass}>
+  <div class="dv-footer__top">
+    <a class="dv-footer__brand" href="#inicio">
+      <span class={logoClass} role="img" aria-label={logoLabel}></span>
+    </a>
+    <div class="dv-footer__nav">
+      {
+        columns.map((col) => (
+          <div class="dv-footer__col">
+            <h5 data-i18n={col.heading.i18nKey}>{col.heading.label}</h5>
+            {col.links.map((link) =>
+              link.external ? (
+                <a href={link.href} target="_blank" rel="noopener">
+                  {link.label}
+                </a>
+              ) : (
+                <a href={link.href} data-i18n={link.i18nKey}>
+                  {link.label}
+                </a>
+              ),
+            )}
+          </div>
+        ))
+      }
+    </div>
+    <SocialRail class="dv-footer__social" links={socialLinks} />
+  </div>
+  <div class="dv-footer__bottom">
+    <span data-i18n="footer.rights"
+      >© 2026 Da Vinci Barra Ristorante, C.A. Todos los derechos reservados.</span
+    >
+    <span data-i18n={tagline.i18nKey}>{tagline.label}</span>
+    <span class="dv-footer__dev"
+      >Sitio web desarrollado por
+      <a href="https://mdnpublicidad.com" target="_blank" rel="noopener"
+        >MDN Publicidad</a
+      ></span
+    >
+  </div>
+</footer>

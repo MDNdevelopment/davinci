@@ -1,0 +1,65 @@
+---
+export interface NavLink {
+  href: string;
+  i18nKey?: string;
+  label: string;
+  /** Boolean data-attribute used as a JS hook, e.g. "data-menu-open". */
+  dataAttr?: string;
+  /** Extra class, e.g. the café nav's "dv-nav__link--rist" modifier. */
+  class?: string;
+}
+
+interface Props {
+  variant: "ristorante" | "cafe";
+  logoLabel: string;
+  links: NavLink[];
+  cta: { href: string; i18nKey: string; label: string };
+}
+
+const { variant, logoLabel, links, cta } = Astro.props;
+const navClass = variant === "cafe" ? "dv-nav dv-nav--cafe" : "dv-nav";
+const logoClass = variant === "cafe" ? "dv-cafe-logo" : "dv-rist-logo";
+
+function linkAttrs(link: NavLink) {
+  return link.dataAttr ? { [link.dataAttr]: true } : {};
+}
+---
+
+<nav class={navClass} data-scrolled="false">
+  <a class="dv-nav__brand" href="#inicio">
+    <span class={logoClass} role="img" aria-label={logoLabel}></span>
+  </a>
+  <div class="dv-nav__links">
+    {
+      links.map((link) => (
+        <a
+          class={["dv-nav__link", link.class].filter(Boolean).join(" ")}
+          href={link.href}
+          data-i18n={link.i18nKey}
+          {...linkAttrs(link)}
+        >
+          {link.label}
+        </a>
+      ))
+    }
+    <slot name="lang" />
+    <a class="dv-nav__cta" href={cta.href} target="_blank" rel="noopener" data-i18n={cta.i18nKey}>
+      {cta.label}
+    </a>
+  </div>
+  <button class="dv-burger" aria-label="Abrir menú">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="dv-mobile" data-open="false">
+  <button class="dv-mobile__close" aria-label="Cerrar">×</button>
+  {
+    links.map((link) => (
+      <a href={link.href} data-i18n={link.i18nKey} {...linkAttrs(link)}>
+        {link.label}
+      </a>
+    ))
+  }
+  <slot name="lang-mobile" />
+</div>

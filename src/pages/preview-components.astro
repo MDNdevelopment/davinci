@@ -1,0 +1,120 @@
+---
+// Temporary Phase 1 preview page — exercises the shared components with
+// real Ristorante content before the full page migration (Phase 2).
+// Not linked from navigation; removed once index.astro/cafe.astro exist.
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Nav from "../components/Nav.astro";
+import LangSwitcher from "../components/LangSwitcher.astro";
+import SocialRail from "../components/SocialRail.astro";
+import Footer from "../components/Footer.astro";
+import ClubForm from "../components/ClubForm.astro";
+import VisitSection from "../components/VisitSection.astro";
+import "../styles/ristorante.css";
+
+const navLinks = [
+  { href: "#inicio", i18nKey: "nav.inicio", label: "Inicio" },
+  { href: "cafe.html", i18nKey: "nav.cafe", label: "Café" },
+  { href: "#menu-modal", i18nKey: "nav.menu", label: "Menú", dataAttr: "data-menu-open" },
+  { href: "#nosotros", i18nKey: "nav.nosotros", label: "Nosotros" },
+  { href: "#club", i18nKey: "nav.club", label: "Club" },
+  { href: "#ubicanos", i18nKey: "nav.ubicanos", label: "Ubícanos" },
+];
+
+const socialLinks = [
+  { icon: "instagram" as const, href: "https://www.instagram.com/davincimcbo/", label: "Instagram" },
+  { icon: "facebook-f" as const, href: "https://es-la.facebook.com/DaVinciRestaurante/", label: "Facebook" },
+  { icon: "youtube" as const, href: "https://www.youtube.com/channel/UCRuQdtUVK3lYBx3yplDv7_g", label: "YouTube" },
+  { icon: "tiktok" as const, href: "https://www.tiktok.com/@grupodavinci", label: "TikTok" },
+];
+---
+
+<BaseLayout
+  title="Da Vinci Ristorante — preview de componentes"
+  description="Página de prueba Fase 1"
+  canonical="https://davinciristorante.com.ve/preview-components"
+  hreflangs={[]}
+  alternatePage={{ href: "https://davinciristorante.com.ve/cafe.html", title: "Da Vinci Café" }}
+  ogImage="https://davinciristorante.com.ve/img/Nueva%20web/Hero/Davinci%20hero%201.webp"
+  siteName="Da Vinci Ristorante"
+>
+  <Nav
+    variant="ristorante"
+    logoLabel="Da Vinci Ristorante"
+    links={navLinks}
+    cta={{
+      href: "https://api.whatsapp.com/send/?phone=584120256382",
+      i18nKey: "hero.cta1",
+      label: "Reservar mesa",
+    }}
+  >
+    <LangSwitcher slot="lang" />
+    <LangSwitcher slot="lang-mobile" mobile />
+  </Nav>
+
+  <main style="padding-top: 6rem;">
+    <SocialRail class="dv-footer__social" links={socialLinks} />
+
+    <ClubForm />
+
+    <VisitSection
+      id="ubicanos"
+      variant="ristorante"
+      kickerI18n="horario.kicker"
+      kickerText="Visítanos"
+      titleI18n="horario.title"
+      titleText="Horario"
+      hours={[
+        {
+          labelI18n: "horario.dommier",
+          labelText: "Domingo a Miércoles",
+          valueI18n: "horario.domh",
+          valueText: "07:30 a. m. – 10:00 p. m.",
+        },
+        {
+          labelI18n: "horario.juesab",
+          labelText: "Jueves a Sábado",
+          valueI18n: "horario.jueh",
+          valueText: "07:30 a. m. – 11:00 p. m.",
+        },
+      ]}
+      mapTitle="Mapa Da Vinci"
+      mapSrc="https://www.google.com/maps/d/embed?mid=1GwPzsBF3ltutrd0LxsgIWvwK-D_P0Ic&ehbc=2E312F&noprof=1"
+      headingI18n="ubicanos.title"
+      headingText="Maracaibo, Edo. Zulia"
+      subI18n="ubicanos.sub"
+      subText="Visítanos en nuestra sede principal."
+      subColor="#5f5e50"
+      sedes={[
+        {
+          href: "https://www.google.com/maps/search/?api=1&query=Av.+11+entre+calles+75+y+76+Maracaibo+Venezuela",
+          name: "Da Vinci Ristorante",
+          address: "Av. 11 entre calle 75 y 76, Maracaibo",
+        },
+      ]}
+    />
+  </main>
+
+  <Footer
+    variant="ristorante"
+    logoLabel="Da Vinci Ristorante"
+    columns={[
+      {
+        heading: { i18nKey: "footer.rist", label: "Ristorante" },
+        links: [
+          { href: "#nosotros", i18nKey: "nav.nosotros", label: "Nosotros" },
+          { href: "#menu-modal", i18nKey: "nav.menu", label: "Menú" },
+          { href: "#club", i18nKey: "nav.club", label: "Club" },
+        ],
+      },
+      {
+        heading: { i18nKey: "nav.ubicanos", label: "Ubícanos" },
+        links: [
+          { href: "#ubicanos", label: "Maracaibo, Zulia" },
+          { href: "https://api.whatsapp.com/send/?phone=584120256382", label: "WhatsApp", external: true },
+        ],
+      },
+    ]}
+    socialLinks={socialLinks}
+    tagline={{ i18nKey: "footer.tagline", label: "Grupo Da Vinci · Maracaibo, Venezuela" }}
+  />
+</BaseLayout>
