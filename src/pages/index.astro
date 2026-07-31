@@ -58,6 +58,7 @@ const MARQUEE_TILES = [
   googleSiteVerification="sGnjUJVGym6l1gNhsqKlrw0AMd5bKHVE6W2g7Ga9vto"
 >
   <Fragment slot="head">
+    <link rel="preload" as="image" href="/img/Nueva web/Hero/Davingi Hero 3.webp" fetchpriority="high" />
     <script type="application/ld+json" is:inline set:html={JSON.stringify(structuredData)} />
   </Fragment>
 
@@ -157,6 +158,8 @@ const MARQUEE_TILES = [
               <img
                 src={`/img/Nueva web/marquesina/Davinci marquesina ${tile.file}.webp`}
                 loading="lazy"
+                width="340"
+                height="500"
                 alt={tile.alt}
               />
             </button>
@@ -168,6 +171,8 @@ const MARQUEE_TILES = [
               <img
                 src={`/img/Nueva web/marquesina/Davinci marquesina ${tile.file}.webp`}
                 loading="lazy"
+                width="340"
+                height="500"
                 alt=""
                 aria-hidden="true"
               />
@@ -223,7 +228,7 @@ const MARQUEE_TILES = [
         </div>
       </div>
       <div class="dv-nosotros__media reveal">
-        <img src="/img/Nueva web/marquesina/Davinci marquesina 3.webp" alt="Ambiente Da Vinci Ristorante" />
+        <img src="/img/Nueva web/marquesina/Davinci marquesina 3.webp" width="800" height="1200" alt="Ambiente Da Vinci Ristorante" />
         <div class="dv-nosotros__badge">1996<small>Dal · Est.</small></div>
       </div>
     </div>
@@ -356,7 +361,7 @@ const MARQUEE_TILES = [
 
   <!-- ===== MUSIC BUTTON ===== -->
   <button id="music-btn" class="play-music" aria-label="Música">
-    <img class="pause-img" src="/img/Simple_Music.-whitesvg.svg" alt="" />
+    <img class="pause-img" src="/img/Simple_Music.-whitesvg.svg" width="26" height="26" alt="" />
   </button>
 
   <audio hidden controls autoplay id="bgMusic">

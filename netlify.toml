@@ -1,3 +1,21 @@
 [build]
   command = "astro build"
   publish = "dist"
+
+# Astro fingerprints these filenames with a content hash, so they're safe to
+# cache for a year. Images/fonts aren't hashed, but they change rarely and
+# get a shorter, still-long cache window.
+[[headers]]
+  for = "/_astro/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/img/*"
+  [headers.values]
+    Cache-Control = "public, max-age=2592000"
+
+[[headers]]
+  for = "/fonts/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
