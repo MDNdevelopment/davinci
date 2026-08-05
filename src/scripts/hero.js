@@ -76,7 +76,22 @@ if (slides.length) {
     }
   }
 
-  goTo(0);
+  // Defer starting the hero (and downloading its video, which has
+  // preload="none") until after the initial paint so it doesn't compete
+  // with above-the-fold resources for bandwidth/LCP.
+  const scheduleStart = () => {
+    if ("requestIdleCallback" in window) {
+      requestIdleCallback(() => goTo(0), { timeout: 2000 });
+    } else {
+      setTimeout(() => goTo(0), 200);
+    }
+  };
+
+  if (document.readyState === "complete") {
+    scheduleStart();
+  } else {
+    window.addEventListener("load", scheduleStart, { once: true });
+  }
 
   dots.forEach((btn, i) => btn.addEventListener("click", () => goTo(i)));
 }

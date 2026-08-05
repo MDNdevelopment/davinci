@@ -548,8 +548,8 @@ p {
   aspect-ratio: 1 / 1.4;
   background-color: #c9bfa3;
   opacity: 0.55;
-  -webkit-mask: url("/img/Illustrations/Leaf.svg") no-repeat center / contain;
-  mask: url("/img/Illustrations/Leaf.svg") no-repeat center / contain;
+  -webkit-mask: url("/img/Illustrations/Leaf.webp") no-repeat center / contain;
+  mask: url("/img/Illustrations/Leaf.webp") no-repeat center / contain;
 }
 
 .marquee {
@@ -650,6 +650,9 @@ p {
 .lightbox img {
   max-width: 92vw;
   max-height: 86vh;
+  width: auto;
+  height: auto;
+  aspect-ratio: 800 / 1200;
   border-radius: 12px;
   box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
 }
@@ -713,9 +716,9 @@ p {
   width: clamp(280px, 34vw, 520px);
   aspect-ratio: 324.68 / 485.18;
   background-color: #c9bfa3;
-  -webkit-mask: url("/img/Illustrations/Davinci.svg") no-repeat bottom left /
+  -webkit-mask: url("/img/Illustrations/Davinci.webp") no-repeat bottom left /
     contain;
-  mask: url("/img/Illustrations/Davinci.svg") no-repeat bottom left / contain;
+  mask: url("/img/Illustrations/Davinci.webp") no-repeat bottom left / contain;
   opacity: 0.62;
   pointer-events: none;
   z-index: 0;

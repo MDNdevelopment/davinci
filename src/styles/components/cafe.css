@@ -601,6 +601,8 @@
   min-height: 0;
   max-height: 100%;
   padding-right: 0.25rem;
+  /* Extra bottom padding keeps the last item clear of the fade below */
+  padding-bottom: 56px;
   scrollbar-width: thin;
   scrollbar-color: var(--cafe-line, rgba(111,93,58,0.28)) transparent;
   /* Fade at bottom signals more content to scroll */

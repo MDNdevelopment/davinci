@@ -118,11 +118,11 @@
     {
       name: 'Promos',
       items: [
-        { name: 'Prensadito + Cappuccino',       price: '$4,00', img: FALLBACK },
-        { name: 'Cachito + Cappuccino',          price: '$3,00', img: FALLBACK },
-        { name: 'Torta del Día + Cappuccino',    price: '$5,95', img: FALLBACK },
+        { name: 'Prensadito + Cappuccino',       price: '$4,00', img: '/img/cafe/menu/prensadito-cappuccino.webp' },
+        { name: 'Cachito + Cappuccino',          price: '$3,00', img: '/img/cafe/menu/cachito-cappuccino.webp' },
+        { name: 'Torta del Día + Cappuccino',    price: '$5,95', img: '/img/cafe/menu/torta-del-dia-cappuccino.webp' },
         { name: 'Ponque + Cappuccino',           price: '$2,95', img: FALLBACK },
-        { name: 'Combo Pranzo',                  price: '$7,50', img: FALLBACK, desc: 'Pastelito + Refresco + Pan.' },
+        { name: 'Combo Pranzo',                  price: '$7,50', img: '/img/cafe/menu/combo-pranzo.webp', desc: 'Pasticho + Refresco + Pan.' },
       ],
     },
   ];

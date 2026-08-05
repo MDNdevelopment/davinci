@@ -1,4 +1,5 @@
 ---
+import { Image, getImage } from "astro:assets";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Nav from "../components/Nav.astro";
 import LangSwitcher from "../components/LangSwitcher.astro";
@@ -11,6 +12,36 @@ import structuredData from "../data/index-structured-data.json";
 import "../styles/ristorante.css";
 import "../styles/components/menu-modal.css";
 import "../styles/components/video-modal.css";
+
+import heroSlide1 from "../assets/img/hero/davinci-hero-1.webp";
+import heroSlide2 from "../assets/img/hero/davinci-hero-2.webp";
+import heroSlide3 from "../assets/img/hero/davinci-hero-3.webp";
+import marquesina1 from "../assets/img/marquesina/davinci-marquesina-1.webp";
+import marquesina2 from "../assets/img/marquesina/davinci-marquesina-2.webp";
+import marquesina3 from "../assets/img/marquesina/davinci-marquesina-3.webp";
+import marquesina4 from "../assets/img/marquesina/davinci-marquesina-4.webp";
+import marquesina5 from "../assets/img/marquesina/davinci-marquesina-5.webp";
+import marquesina7 from "../assets/img/marquesina/davinci-marquesina-7.webp";
+import marquesina8 from "../assets/img/marquesina/davinci-marquesina-8.webp";
+
+// The hero slides are painted via CSS `background-image` (cross-fade
+// slideshow), so we run them through astro:assets' build pipeline with
+// getImage() to get compressed/resized output while keeping the existing
+// background-image markup and CSS untouched.
+const [heroBg1, heroBg2, heroBg3] = await Promise.all(
+  [heroSlide1, heroSlide2, heroSlide3].map((src) =>
+    getImage({ src, width: 1920, format: "webp", quality: 78 }),
+  ),
+);
+
+const marquesinaFiles = {
+  1: marquesina1,
+  2: marquesina2,
+  4: marquesina4,
+  5: marquesina5,
+  7: marquesina7,
+  8: marquesina8,
+};
 
 const navLinks = [
   { href: "#inicio", i18nKey: "nav.inicio", label: "Inicio" },
@@ -52,13 +83,13 @@ const MARQUEE_TILES = [
     { hreflang: "x-default", href: "https://davinciristorante.com.ve/" },
   ]}
   alternatePage={{ href: "https://davinciristorante.com.ve/cafe.html", title: "Da Vinci Café" }}
-  ogImage="https://davinciristorante.com.ve/img/Nueva%20web/Hero/Davinci%20hero%201.webp"
+  ogImage={`https://davinciristorante.com.ve${heroBg1.src}`}
   siteName="Da Vinci Ristorante"
   localeAlternates={["en_US", "it_IT"]}
   googleSiteVerification="sGnjUJVGym6l1gNhsqKlrw0AMd5bKHVE6W2g7Ga9vto"
 >
   <Fragment slot="head">
-    <link rel="preload" as="image" href="/img/Nueva web/Hero/Davingi Hero 3.webp" fetchpriority="high" />
+    <link rel="preload" as="image" href={heroBg3.src} fetchpriority="high" />
     <script type="application/ld+json" is:inline set:html={JSON.stringify(structuredData)} />
   </Fragment>
 
@@ -77,27 +108,27 @@ const MARQUEE_TILES = [
     <div class="dv-hero__slides">
       <div
         class="dv-hero__slide dv-hero__slide--video is-active"
-        style={`background-image: url("/img/Nueva web/Hero/Davingi Hero 3.webp");`}
+        style={`background-image: url("${heroBg3.src}");`}
       >
         <video
           class="dv-hero__video"
           data-hero-video
           muted
           playsinline
-          preload="auto"
-          poster="/img/Nueva web/Hero/Davingi Hero 3.webp"
+          preload="none"
+          poster={heroBg3.src}
         >
-          <source src="/img/Hero davinci.mp4" type="video/mp4" />
+          <source src="/img/hero-davinci.mp4" type="video/mp4" />
         </video>
       </div>
       <div
         class="dv-hero__slide"
-        style={`background-image: url("/img/Nueva web/Hero/Davinci hero 1.webp");`}
+        style={`background-image: url("${heroBg1.src}");`}
       >
       </div>
       <div
         class="dv-hero__slide"
-        style={`background-image: url("/img/Nueva web/Hero/Davinci hero 2.webp");`}
+        style={`background-image: url("${heroBg2.src}");`}
       >
       </div>
     </div>
@@ -130,9 +161,9 @@ const MARQUEE_TILES = [
       <button aria-label="Slide 3"></button>
     </div>
 
-    <button class="dv-anniv" data-video-open aria-label="30 años de historia">
-      <span class="dv-anniv__years">30</span>
-      <span class="dv-anniv__label" data-i18n="hero.anniv">años de historia</span>
+    <button class="dv-anniv" data-video-open aria-labelledby="dv-anniv-years dv-anniv-label">
+      <span class="dv-anniv__years" id="dv-anniv-years">30</span>
+      <span class="dv-anniv__label" id="dv-anniv-label" data-i18n="hero.anniv">años de historia</span>
       <span class="dv-anniv__play" aria-hidden="true">
         <Icon name="play" class="icon" />
       </span>
@@ -155,11 +186,13 @@ const MARQUEE_TILES = [
         {
           MARQUEE_TILES.map((tile) => (
             <button class="tile" aria-label={tile.alt}>
-              <img
-                src={`/img/Nueva web/marquesina/Davinci marquesina ${tile.file}.webp`}
+              <Image
+                src={marquesinaFiles[tile.file]}
+                widths={[340, 680]}
+                sizes="340px"
                 loading="lazy"
-                width="340"
-                height="500"
+                width={340}
+                height={500}
                 alt={tile.alt}
               />
             </button>
@@ -168,11 +201,13 @@ const MARQUEE_TILES = [
         {
           MARQUEE_TILES.map((tile) => (
             <button class="tile" aria-label={tile.alt}>
-              <img
-                src={`/img/Nueva web/marquesina/Davinci marquesina ${tile.file}.webp`}
+              <Image
+                src={marquesinaFiles[tile.file]}
+                widths={[340, 680]}
+                sizes="340px"
                 loading="lazy"
-                width="340"
-                height="500"
+                width={340}
+                height={500}
                 alt=""
                 aria-hidden="true"
               />
@@ -228,7 +263,15 @@ const MARQUEE_TILES = [
         </div>
       </div>
       <div class="dv-nosotros__media reveal">
-        <img src="/img/Nueva web/marquesina/Davinci marquesina 3.webp" width="800" height="1200" alt="Ambiente Da Vinci Ristorante" />
+        <Image
+          src={marquesina3}
+          widths={[400, 800]}
+          sizes="(min-width: 900px) 34vw, 90vw"
+          loading="lazy"
+          width={400}
+          height={600}
+          alt="Ambiente Da Vinci Ristorante"
+        />
         <div class="dv-nosotros__badge">1996<small>Dal · Est.</small></div>
       </div>
     </div>
@@ -344,7 +387,7 @@ const MARQUEE_TILES = [
 
   <!-- ===== LIGHTBOX ===== -->
   <div class="lightbox" data-open="false">
-    <img src="" alt="Galería Da Vinci" />
+    <img src="" width="800" height="1200" alt="Galería Da Vinci" />
     <button class="lightbox__close" aria-label="Cerrar">×</button>
   </div>
 
