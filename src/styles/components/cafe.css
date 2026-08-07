@@ -614,6 +614,21 @@
 .cafe-menu__list::-webkit-scrollbar-thumb  { background: var(--cafe-line, rgba(111,93,58,0.28)); border-radius: 2px; }
 .cafe-menu__list::-webkit-scrollbar-thumb:hover { background: rgba(111,93,58,0.5); }
 
+/* Group heading — top-level split between Comida / Bebidas */
+.cafe-menu__group {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--cafe-marron, #4a3f30);
+  margin: 1.75rem 0 0.35rem;
+  padding: 0 0.5rem 0.5rem;
+  border-bottom: 2px solid var(--cafe-bronze, #6f5d3a);
+  user-select: none;
+}
+.cafe-menu__group:first-child { margin-top: 0; }
+
 /* Category heading */
 .cafe-menu__cat {
   font-family: "Cormorant Garamond", Georgia, serif;
@@ -635,6 +650,20 @@
   vertical-align: middle;
 }
 .cafe-menu__cat:first-child { margin-top: 0; }
+
+/* Subcategory heading — lighter weight, nested under a category */
+.cafe-menu__sub {
+  font-family: "Poppins-Regular", "Poppins", sans-serif;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(74, 63, 48, 0.6);
+  margin: 0.85rem 0 0.15rem;
+  padding: 0 0.5rem;
+  user-select: none;
+}
+.cafe-menu__cat + .cafe-menu__sub { margin-top: 0.35rem; }
 
 /* Menu item row */
 .cafe-menu__item {
@@ -779,7 +808,9 @@
 }
 /* ── Desktop: larger text ───────────────────────────────────────────────────── */
 @media (min-width: 901px) {
+  .cafe-menu__group     { font-size: 1.2rem; }
   .cafe-menu__cat       { font-size: 0.92rem; }
+  .cafe-menu__sub       { font-size: 0.76rem; }
   .cafe-menu__item      { padding: 0.55rem 0.65rem; }
   .cafe-menu__item-name { font-size: 0.97rem; }
   .cafe-menu__item-desc { font-size: 0.78rem; }
@@ -1481,144 +1512,6 @@
   pointer-events: none;
 }
 
-/* ================= CLUB café (banda cálida marrón) ================= */
-.dv-club {
-  position: relative;
-  overflow: hidden;
-}
-
-.dv-club__deco {
-  position: absolute;
-  pointer-events: none;
-  display: block;
-  line-height: 0;
-}
-.dv-club__deco--scallop {
-  width: 420px;
-  height: 420px;
-  top: -80px;
-  right: -60px;
-  opacity: 0.22;
-  transform: rotate(18deg);
-  filter: blur(0.5px);
-}
-.dv-club__deco--circle {
-  width: 260px;
-  height: 260px;
-  bottom: -60px;
-  left: -40px;
-  opacity: 0.2;
-  transform: rotate(-12deg);
-  filter: blur(0.5px);
-}
-.dv-club__deco--seal {
-  width: 160px;
-  height: 160px;
-  bottom: 10%;
-  right: 38%;
-  opacity: 0.14;
-  transform: rotate(6deg);
-}
-
-.dv-club__grid {
-  display: grid;
-  grid-template-columns: 0.9fr 1.1fr;
-  gap: clamp(2rem, 5vw, 5rem);
-  align-items: center;
-}
-.club-form-container {
-  min-height: 1px;
-  max-width: 100%;
-  background: rgba(244, 238, 226, 0.04);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
-  border: 1px solid rgba(216, 199, 159, 0.18);
-  border-radius: 18px;
-  padding: clamp(1.4rem, 3vw, 2.2rem);
-  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.35);
-}
-.club-form-container > div {
-  width: 100%;
-  max-width: 100%;
-  box-sizing: border-box;
-}
-.dv-club__sub {
-  color: rgba(229, 222, 204, 0.8);
-  line-height: 1.7;
-  margin-top: 1rem;
-  max-width: 40ch;
-}
-.dv-club__survey {
-  margin-top: 1.8rem;
-}
-.dv-club__survey a {
-  font-size: 0.8rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  border-bottom: 1px solid currentColor;
-  padding-bottom: 3px;
-}
-
-.dv-club--cafe {
-  background: radial-gradient(
-    ellipse at top left,
-    #4a3826 0%,
-    #33291d 55%,
-    #261d12 100%
-  );
-  border-top: 1px solid rgba(216, 199, 159, 0.18);
-  border-bottom: 1px solid rgba(216, 199, 159, 0.18);
-  color: rgba(244, 238, 226, 0.85);
-}
-.dv-club--cafe .kicker {
-  color: var(--cafe-verde);
-  font-size: 0.9rem;
-  font-weight: 600;
-  letter-spacing: 0.38em;
-}
-.dv-club--cafe .h-display {
-  color: #f6f1e7;
-  font-style: normal;
-  font-size: clamp(2.4rem, 5vw, 4rem);
-  line-height: 1;
-}
-.dv-club--cafe .h-display::after {
-  content: "";
-  display: block;
-  width: 56px;
-  height: 2px;
-  background: linear-gradient(90deg, var(--cafe-verde), transparent);
-  margin-top: 1rem;
-  border-radius: 2px;
-}
-.dv-club--cafe .dv-club__sub {
-  color: rgba(244, 238, 226, 0.9);
-  font-size: 1.05rem;
-  line-height: 1.75;
-}
-.dv-club--cafe .dv-club__survey a {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  color: #33291d;
-  background: #d8c79f;
-  border: none;
-  border-radius: 999px;
-  padding: 0.65rem 1.4rem;
-  font-size: 0.8rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  text-decoration: none;
-  transition:
-    background 0.2s,
-    transform 0.2s;
-}
-.dv-club--cafe .dv-club__survey a:hover {
-  background: #ece2cd;
-  transform: translateY(-2px);
-}
-
 /* ================= VISÍTANOS café ================= */
 .dv-visit--cafe {
   background: var(--paper);
@@ -1911,9 +1804,6 @@
   }
   .dv-csocial {
     display: none;
-  }
-  .dv-club__grid {
-    grid-template-columns: 1fr;
   }
 }
 @media (max-width: 860px) {

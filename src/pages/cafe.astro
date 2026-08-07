@@ -4,7 +4,6 @@ import Nav from "../components/Nav.astro";
 import LangSwitcher from "../components/LangSwitcher.astro";
 import SocialRail from "../components/SocialRail.astro";
 import Footer from "../components/Footer.astro";
-import ClubForm from "../components/ClubForm.astro";
 import VisitSection from "../components/VisitSection.astro";
 import Icon from "../components/Icon.astro";
 import structuredData from "../data/cafe-structured-data.json";
@@ -31,7 +30,6 @@ const heroSlides = [
 const heroSocialLinks = [
   { icon: "instagram" as const, href: "https://www.instagram.com/davincicafe.ve/", label: "Instagram" },
   { icon: "tiktok" as const, href: "https://www.tiktok.com/@grupodavinci", label: "TikTok" },
-  { icon: "whatsapp" as const, href: "https://api.whatsapp.com/send/?phone=584122994586", label: "WhatsApp" },
 ];
 
 const footerSocialLinks = [
@@ -40,11 +38,11 @@ const footerSocialLinks = [
 ];
 
 const BAKE_CATEGORIES = [
-  { cat: "Panini", titleI18n: "cafe.m1", title: "Panes artesanales", descI18n: "cafe.m1d", desc: "Masa madre, horneado del día." },
-  { cat: "Empanadas Horneadas o Integrales", titleI18n: "cafe.m2", title: "Desayunos", descI18n: "cafe.m2d", desc: "Para empezar el día como se debe." },
-  { cat: "Promos", titleI18n: "cafe.m3", title: "Repostería", descI18n: "cafe.m3d", desc: "Postres únicos, dulces de la casa." },
-  { cat: "Infusiones 14 oz", titleI18n: "cafe.m4", title: "Bebidas", descI18n: "cafe.m4d", desc: "Infusiones, jugos y bebidas frías." },
-  { cat: "Café Frío 14 oz", titleI18n: "cafe.m5", title: "Variedad de cafés", descI18n: "cafe.m5d", desc: "Espresso, latte art y café recién hecho." },
+  { cat: "Panes artesanales", titleI18n: "cafe.m1", title: "Panes artesanales", descI18n: "cafe.m1d", desc: "Masa madre, horneado del día." },
+  { cat: "Desayunos", titleI18n: "cafe.m2", title: "Desayunos", descI18n: "cafe.m2d", desc: "Para empezar el día como se debe." },
+  { cat: "Repostería", titleI18n: "cafe.m3", title: "Repostería", descI18n: "cafe.m3d", desc: "Postres únicos, dulces de la casa." },
+  { cat: "Bebidas", titleI18n: "cafe.m4", title: "Bebidas", descI18n: "cafe.m4d", desc: "Infusiones, jugos y bebidas frías." },
+  { cat: "Variedad de cafés", titleI18n: "cafe.m5", title: "Variedad de cafés", descI18n: "cafe.m5d", desc: "Espresso, latte art y café recién hecho." },
 ];
 
 const GALLERY_FILES = [1, 2, 3, 4, 6, 8, 9, 5, 10, 11, 12, 7, 13];
@@ -243,35 +241,6 @@ const SEAL_PATH =
     <img class="lightbox__img" alt="" />
   </div>
 
-  <!-- ===== CLUB DA VINCI ===== -->
-  <section class="sec dv-club dv-club--cafe" id="club">
-    <span class="dv-club__deco dv-club__deco--scallop" aria-hidden="true">
-      <svg viewBox="0 0 100 100" width="100%" height="100%"><path d={SCALLOP_PATH} fill="#b2c587" /></svg>
-    </span>
-    <span class="dv-club__deco dv-club__deco--circle" aria-hidden="true">
-      <svg viewBox="0 0 100 100" width="100%" height="100%"><circle cx="50" cy="50" r="48" fill="#8073ae" /></svg>
-    </span>
-    <span class="dv-club__deco dv-club__deco--seal" aria-hidden="true">
-      <svg viewBox="0 0 100 100" width="100%" height="100%"><path d={SEAL_PATH} fill="#6f5d3a" /></svg>
-    </span>
-    <div class="wrap dv-club__grid">
-      <div class="reveal">
-        <span class="kicker" data-i18n="club.kicker">Únete</span>
-        <h2 class="h-display" data-i18n="club.heading">Club Da Vinci</h2>
-        <p class="dv-club__sub" data-i18n="club.sub">
-          Beneficios, novedades e invitaciones exclusivas. Déjanos tus datos y
-          forma parte de la familia.
-        </p>
-        <div class="dv-club__survey">
-          <a href="https://forms.gle/xn25znAtfVtPn8Ti6" target="_blank" rel="noopener" data-i18n="club.cta"
-            >Completa nuestra encuesta de satisfacción →</a
-          >
-        </div>
-      </div>
-      <ClubForm />
-    </div>
-  </section>
-
   <VisitSection
     id="visita"
     variant="cafe"
@@ -326,7 +295,6 @@ const SEAL_PATH =
         links: [
           { href: "#carta", i18nKey: "cafe.menu.title", label: "Lo que horneamos" },
           { href: "#esencia", i18nKey: "nav.nosotros", label: "Nosotros" },
-          { href: "#club", i18nKey: "club.heading", label: "Club Da Vinci" },
         ],
       },
       {
@@ -334,7 +302,7 @@ const SEAL_PATH =
         links: [
           { href: "#visita", label: "Maracaibo, Zulia" },
           { href: "https://www.instagram.com/davincicafe.ve/", label: "Instagram", external: true },
-          { href: "https://api.whatsapp.com/send/?phone=584122994586", label: "WhatsApp", external: true },
+          { href: "https://api.whatsapp.com/send/?phone=584120256382", label: "WhatsApp", external: true },
         ],
       },
     ]}

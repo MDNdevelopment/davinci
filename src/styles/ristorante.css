@@ -786,107 +786,6 @@ p {
   max-width: 56ch;
   margin-top: 0.4rem;
 }
-
-/* ===== CLUB ===== */
-.dv-club {
-  background: var(--verde-oscuro);
-  color: var(--crema);
-  position: relative;
-  overflow: hidden;
-}
-.dv-club__bg {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  opacity: 0.05;
-  filter: invert(1);
-  background-image: url("/img/patronnuevo.webp");
-  background-size: 460px;
-}
-.dv-club__clouds {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  z-index: 1;
-}
-.dv-club__clouds .cloud {
-  position: absolute;
-  background-color: rgba(229, 222, 204, 0.12);
-  -webkit-mask-repeat: no-repeat;
-  mask-repeat: no-repeat;
-  -webkit-mask-size: contain;
-  mask-size: contain;
-  aspect-ratio: 824.75 / 186.12;
-}
-.dv-club__clouds .cloud--1 {
-  top: 2%;
-  left: -12%;
-  width: 48%;
-  -webkit-mask-image: url("/img/Illustrations/Cloud2.svg");
-  mask-image: url("/img/Illustrations/Cloud2.svg");
-}
-.dv-club__clouds .cloud--2 {
-  bottom: 4%;
-  right: -14%;
-  width: 46%;
-  -webkit-mask-image: url("/img/Illustrations/Cloud4.svg");
-  mask-image: url("/img/Illustrations/Cloud4.svg");
-}
-.dv-club__clouds .cloud--3 {
-  top: 52%;
-  left: -6%;
-  width: 30%;
-  opacity: 0.7;
-  -webkit-mask-image: url("/img/Illustrations/Cloud5.svg");
-  mask-image: url("/img/Illustrations/Cloud5.svg");
-}
-.dv-club__grid {
-  display: grid;
-  grid-template-columns: 0.9fr 1.1fr;
-  gap: clamp(2rem, 5vw, 5rem);
-  align-items: center;
-  position: relative;
-  z-index: 2;
-}
-.club-form-container {
-  min-height: 1px;
-  max-width: 100%;
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
-  border: 1px solid rgba(229, 222, 204, 0.2);
-  border-radius: 18px;
-  padding: clamp(1.4rem, 3vw, 2.2rem);
-  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.35);
-}
-.club-form-container > div {
-  width: 100%;
-  max-width: 100%;
-  box-sizing: border-box;
-}
-.dv-club .kicker {
-  color: var(--arena);
-}
-.dv-club .h-display {
-  color: #fff;
-}
-.dv-club__sub {
-  color: rgba(229, 222, 204, 0.8);
-  line-height: 1.7;
-  margin-top: 1rem;
-  max-width: 40ch;
-}
-.dv-club__survey {
-  margin-top: 1.8rem;
-}
-.dv-club__survey a {
-  font-size: 0.8rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  border-bottom: 1px solid var(--arena);
-  padding-bottom: 3px;
-  color: var(--arena);
-}
 /* ===== VISIT ===== */
 .dv-visit {
   background: var(--paper);
@@ -1187,7 +1086,6 @@ a.dv-sede {
     color: var(--verde-oscuro, #3e4a33);
   }
   .dv-nosotros__grid,
-  .dv-club__grid,
   .dv-visit__grid {
     grid-template-columns: 1fr;
   }
@@ -1226,17 +1124,6 @@ a.dv-sede {
     width: 75%;
     right: -14%;
     top: 20%;
-  }
-  .dv-club__clouds .cloud--1 {
-    width: 90%;
-    left: -18%;
-  }
-  .dv-club__clouds .cloud--2 {
-    width: 85%;
-    right: -18%;
-  }
-  .dv-club__clouds .cloud--3 {
-    display: none;
   }
   .dv-gallery__clouds .cloud--3 {
     display: none;

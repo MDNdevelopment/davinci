@@ -4,7 +4,6 @@
       "nav.inicio": "Inicio",
       "nav.menu": "Menú",
       "nav.nosotros": "Nosotros",
-      "nav.club": "Club",
       "nav.ubicanos": "Ubícanos",
       "nav.carta": "Carta",
       "nav.cafe": "Café",
@@ -44,20 +43,6 @@
       "mercato.body":
         "Nuestro diferenciador: salsas, pastas y especialidades elaboradas a mano, con la receta de siempre y el origen de aquí.",
       "mercato.cta": "Conocer el Mercato",
-
-      "club.kicker": "Únete",
-      "club.heading": "Club Da Vinci",
-      "club.sub":
-        "Beneficios, novedades e invitaciones exclusivas. Déjanos tus datos y forma parte de la familia.",
-      "club.cta": "Completa nuestra encuesta de satisfacción",
-      "club.nombre": "Nombre",
-      "club.apellido": "Apellido",
-      "club.email": "Correo electrónico",
-      "club.telefono": "Teléfono",
-      "club.fecha": "Fecha de nacimiento",
-      "club.sexo": "Sexo",
-      "club.cedula": "Cédula de identidad",
-      "club.submit": "Unirme al club",
 
       "horario.kicker": "Visítanos",
       "horario.title": "Horario",
@@ -136,7 +121,6 @@
       "nav.inicio": "Home",
       "nav.menu": "Menu",
       "nav.nosotros": "About",
-      "nav.club": "Club",
       "nav.ubicanos": "Find us",
       "nav.carta": "Menu",
       "nav.cafe": "Café",
@@ -176,20 +160,6 @@
       "mercato.body":
         "Our differentiator: sauces, pastas and specialties made by hand — the recipe of always, made right here.",
       "mercato.cta": "Explore the Mercato",
-
-      "club.kicker": "Join",
-      "club.heading": "Club Da Vinci",
-      "club.sub":
-        "Perks, news and exclusive invitations. Leave your details and become part of the family.",
-      "club.cta": "Take our service satisfaction survey",
-      "club.nombre": "First name",
-      "club.apellido": "Last name",
-      "club.email": "Email",
-      "club.telefono": "Phone",
-      "club.fecha": "Date of birth",
-      "club.sexo": "Sex",
-      "club.cedula": "ID number",
-      "club.submit": "Join the club",
 
       "horario.kicker": "Visit us",
       "horario.title": "Hours",
@@ -267,7 +237,6 @@
       "nav.inicio": "Inizio",
       "nav.menu": "Menù",
       "nav.nosotros": "Chi siamo",
-      "nav.club": "Club",
       "nav.ubicanos": "Trovaci",
       "nav.carta": "Menù",
       "nav.cafe": "Café",
@@ -300,20 +269,6 @@
         "Sappiamo quello che facciamo e garantiamo esperienze memorabili.",
       "valores.heading": "Valori",
       "valores.body": "Eccellenza · Servizio eccezionale · Rispetto · Impegno.",
-
-      "club.kicker": "Unisciti",
-      "club.heading": "Club Da Vinci",
-      "club.sub":
-        "Vantaggi, novità e inviti esclusivi. Lascia i tuoi dati ed entra a far parte della famiglia.",
-      "club.cta": "Completa il sondaggio di soddisfazione",
-      "club.nombre": "Nome",
-      "club.apellido": "Cognome",
-      "club.email": "Email",
-      "club.telefono": "Telefono",
-      "club.fecha": "Data di nascita",
-      "club.sexo": "Sesso",
-      "club.cedula": "Documento d’identità",
-      "club.submit": "Unisciti al club",
 
       "horario.kicker": "Visitaci",
       "horario.title": "Orari",
