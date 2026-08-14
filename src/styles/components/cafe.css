@@ -1331,14 +1331,7 @@
   font-weight: 500;
   display: flex;
   align-items: center;
-  gap: 0.8rem;
   color: #f1e7d6;
-}
-.dv-chero__kicker::before {
-  content: "";
-  width: 42px;
-  height: 1px;
-  background: var(--cafe-verde);
 }
 .dv-chero__title {
   font-family: var(--font-display);

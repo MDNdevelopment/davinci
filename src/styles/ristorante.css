@@ -121,6 +121,34 @@ p {
     width: 9rem;
     height: 3.1rem;
   }
+
+  /* Hero: trim spacing, drop the redundant social rail (already in the
+     footer) and the manual line break so the copy reflows naturally. */
+  .dv-hero__inner {
+    gap: 0.9rem;
+  }
+  .dv-hero__kicker {
+    font-size: 0.68rem;
+    letter-spacing: 0.22em;
+  }
+  .dv-hero__title {
+    font-size: clamp(1.7rem, 7vw, 2.4rem);
+  }
+  .dv-hero__title br {
+    display: none;
+  }
+  .dv-hero__sub {
+    font-size: 0.95rem;
+    line-height: 1.55;
+  }
+  .dv-hero__actions {
+    gap: 0.6rem;
+    margin-top: 0.2rem;
+  }
+  .dv-hero .btn {
+    padding: 0.75rem 1.3rem;
+    font-size: 0.74rem;
+  }
 }
 .dv-footer .dv-rist-logo {
   background-color: #ece2cd;
@@ -319,13 +347,6 @@ p {
   font-weight: 500;
   display: flex;
   align-items: center;
-  gap: 0.8rem;
-}
-.dv-hero__kicker::before {
-  content: "";
-  width: 42px;
-  height: 1px;
-  background: var(--arena);
 }
 .dv-hero__title {
   font-family: var(--font-display);
@@ -456,14 +477,7 @@ p {
   color: var(--terracota);
   display: inline-flex;
   align-items: center;
-  gap: 0.7rem;
   margin-bottom: 1rem;
-}
-.kicker::before {
-  content: "";
-  width: 30px;
-  height: 1px;
-  background: currentColor;
 }
 
 .h-display {
@@ -1084,12 +1098,7 @@ a.dv-sede {
     left: 14px;
   }
   .dv-social {
-    flex-direction: column;
-    right: 0.75rem;
-    gap: 0.875rem;
-  }
-  .dv-social a {
-    font-size: 1.25rem;
+    display: none;
   }
 }
 @media (max-width: 560px) {

@@ -11,7 +11,7 @@
 
       "hero.kicker": "Restaurante Italiano · Maracaibo desde 1996",
       "hero.title":
-        "Creamos experiencias memorables\nofreciendo lo mejor de la gastronomía italiana",
+        "Creamos experiencias memorables \nofreciendo lo mejor de la gastronomía italiana",
       "hero.sub":
         "Cocina italiana auténtica con mirada contemporánea. Recetas de todas las regiones de Italia, servidas con calidad, servicio y respeto.",
       "hero.cta1": "Reservar mesa",
@@ -128,7 +128,7 @@
 
       "hero.kicker": "Italian Restaurant · Maracaibo since 1996",
       "hero.title":
-        "We create memorable experiences\noffering the best of Italian cuisine",
+        "We create memorable experiences \noffering the best of Italian cuisine",
       "hero.sub":
         "Authentic Italian cuisine with a contemporary eye. Recipes from every region of Italy, served with quality, service and respect.",
       "hero.cta1": "Book a table",
@@ -244,7 +244,7 @@
 
       "hero.kicker": "Ristorante Italiano · Maracaibo dal 1996",
       "hero.title":
-        "Creiamo esperienze memorabili\noffrendo il meglio della gastronomia italiana",
+        "Creiamo esperienze memorabili \noffrendo il meglio della gastronomia italiana",
       "hero.sub":
         "Autentica cucina italiana con uno sguardo contemporaneo. Ricette da ogni regione d’Italia, servite con qualità, servizio e rispetto.",
       "hero.cta1": "Prenota un tavolo",
