@@ -747,15 +747,6 @@ p {
   box-shadow: 0 14px 30px rgba(119, 140, 113, 0.3);
   line-height: 1;
 }
-.dv-nosotros__badge small {
-  display: block;
-  font-family: var(--font-body);
-  font-size: 0.62rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  opacity: 0.85;
-  margin-top: 0.3rem;
-}
 .dv-vals {
   margin-top: 1.6rem;
 }
