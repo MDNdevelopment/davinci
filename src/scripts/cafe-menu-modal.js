@@ -57,7 +57,7 @@
           name: 'Repostería',
           items: [
             { name: 'Torta del Día + Cappuccino',    price: '$5,95', img: '/img/cafe/menu/torta-del-dia-cappuccino.webp' },
-            { name: 'Ponque + Cappuccino',           price: '$2,95', img: FALLBACK },
+            { name: 'Ponque + Cappuccino',           price: '$2,95', img: '/img/cafe/menu/ponque-cappuccino.webp' },
           ],
         },
         {
@@ -123,12 +123,12 @@
             {
               name: 'Café Frío 14 oz',
               items: [
-                { name: 'Iced Latte Vainilla',       price: '$4,50', img: FALLBACK, desc: 'Crema de café, leche y vainilla.' },
+                { name: 'Iced Latte Vainilla',       price: '$4,50', img: '/img/cafe/menu/iced-latte-vainilla.webp', desc: 'Crema de café, leche y vainilla.' },
                 { name: 'Iced Latte Salted Caramel', price: '$4,50', img: FALLBACK, desc: 'Crema de café, leche y caramelo salado.' },
                 { name: 'Iced Latte Moka',           price: '$4,50', img: FALLBACK, desc: 'Crema de café, leche y sirope de chocolate.' },
                 { name: 'Iced Latte Tiramisú',       price: '$4,75', img: FALLBACK, desc: 'Crema de café, crema tiramisú, leche y cacao.' },
-                { name: 'Iced Latte Pistacchio',     price: '$7,00', img: FALLBACK, desc: 'Crema de café y pistacho, leche y topping.' },
-                { name: 'Frozen Cappuccino',         price: '$4,50', img: FALLBACK, desc: 'Crema de café, leche, topping y sirope de chocolate. Servido frappe.' },
+                { name: 'Iced Latte Pistacchio',     price: '$7,00', img: '/img/cafe/menu/iced-latte-pistacchio.webp', desc: 'Crema de café y pistacho, leche y topping.' },
+                { name: 'Frozen Cappuccino',         price: '$4,50', img: '/img/cafe/menu/frozen-cappuccino.webp', desc: 'Crema de café, leche, topping y sirope de chocolate. Servido frappe.' },
               ],
             },
             {
@@ -147,10 +147,10 @@
               name: 'Café 4oz',
               items: [
                 { name: 'Americano',  price: '$2,00', img: FALLBACK },
-                { name: 'Ristretto',  price: '$2,25', img: FALLBACK },
+                { name: 'Ristretto',  price: '$2,25', img: '/img/cafe/menu/ristretto.webp' },
                 { name: 'Espresso',   price: '$2,00', img: FALLBACK },
-                { name: 'Doppio',     price: '$2,25', img: FALLBACK },
-                { name: 'Macchiato',  price: '$2,25', img: FALLBACK },
+                { name: 'Doppio',     price: '$2,25', img: '/img/cafe/menu/doppio.webp' },
+                { name: 'Macchiato',  price: '$2,25', img: '/img/cafe/menu/macchiato.webp' },
                 { name: 'Latte',      price: '$2,25', img: '/img/cafe/menu/cafe-latte-4oz.webp' },
               ],
             },
