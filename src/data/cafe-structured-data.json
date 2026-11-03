@@ -107,49 +107,6 @@
           },
           {
             "@type": "CafeOrCoffeeShop",
-            "@id": "https://davinciristorante.com.ve/cafe.html#cafe-cumbres",
-            "name": "Da Vinci Café Cumbres",
-            "url": "https://davinciristorante.com.ve/cafe.html",
-            "image": "https://davinciristorante.com.ve/img/cafe/hero/Davinci%20cafe%20hero%201.webp",
-            "description": "Panadería artesanal y cafetería dentro de Farmacia Maraplus en Cumbres de Maracaibo.",
-            "telephone": "+584122182768",
-            "servesCuisine": ["Panadería artesanal", "Cafetería", "Repostería"],
-            "priceRange": "$",
-            "address": {
-              "@type": "PostalAddress",
-              "streetAddress": "Farmacia Maraplus, Cumbres de Maracaibo",
-              "addressLocality": "Maracaibo",
-              "addressRegion": "Zulia",
-              "addressCountry": "VE"
-            },
-            "geo": {
-              "@type": "GeoCoordinates",
-              "latitude": "10.6830",
-              "longitude": "-71.6380"
-            },
-            "openingHoursSpecification": [
-              {
-                "@type": "OpeningHoursSpecification",
-                "dayOfWeek": [
-                  "Monday",
-                  "Tuesday",
-                  "Wednesday",
-                  "Thursday",
-                  "Friday",
-                  "Saturday",
-                  "Sunday"
-                ],
-                "opens": "07:00",
-                "closes": "22:00"
-              }
-            ],
-            "hasMap": "https://maps.app.goo.gl/ef2HBMzeqhaH4UU29",
-            "parentOrganization": {
-              "@id": "https://davinciristorante.com.ve/#organization"
-            }
-          },
-          {
-            "@type": "CafeOrCoffeeShop",
             "@id": "https://davinciristorante.com.ve/cafe.html#cafe-indiomara",
             "name": "Da Vinci Café Indio Mara",
             "url": "https://davinciristorante.com.ve/cafe.html",
@@ -199,7 +156,7 @@
                 "name": "¿Dónde están las sedes de Da Vinci Café en Maracaibo?",
                 "acceptedAnswer": {
                   "@type": "Answer",
-                  "text": "Da Vinci Café tiene cuatro sedes en Maracaibo: Bella Vista (Av. 4 con calle 74, Farmacia Maraplus), Norte (Calle 43, Av. 15, Urb. Rosal Sur, sector Fuerzas Armadas), Cumbres (Farmacia Maraplus, Cumbres de Maracaibo) e Indio Mara (Farmacia Maraplus, Indio Mara)."
+                  "text": "Da Vinci Café tiene tres sedes en Maracaibo: Bella Vista (Av. 4 con calle 74, Farmacia Maraplus), Norte (Calle 43, Av. 15, Urb. Rosal Sur, sector Fuerzas Armadas) e Indio Mara (Farmacia Maraplus, Indio Mara)."
                 }
               },
               {
@@ -215,7 +172,7 @@
                 "name": "¿Qué venden en Da Vinci Café?",
                 "acceptedAnswer": {
                   "@type": "Answer",
-                  "text": "En Da Vinci Café ofrecemos panes artesanales de masa madre horneados diariamente, repostería y postres únicos, café, bebidas e infusiones, y desayunos completos en cuatro sedes de Maracaibo."
+                  "text": "En Da Vinci Café ofrecemos panes artesanales de masa madre horneados diariamente, repostería y postres únicos, café, bebidas e infusiones, y desayunos completos en tres sedes de Maracaibo."
                 }
               },
               {
@@ -223,7 +180,7 @@
                 "name": "¿Da Vinci Café tiene pan de masa madre en Maracaibo?",
                 "acceptedAnswer": {
                   "@type": "Answer",
-                  "text": "Sí, Da Vinci Café elabora panes artesanales de masa madre horneados cada día en sus cuatro sedes ubicadas en Maracaibo, estado Zulia."
+                  "text": "Sí, Da Vinci Café elabora panes artesanales de masa madre horneados cada día en sus tres sedes ubicadas en Maracaibo, estado Zulia."
                 }
               }
             ]

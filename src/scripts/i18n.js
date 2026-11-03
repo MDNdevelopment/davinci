@@ -93,7 +93,7 @@
         "Panadería artesanal · Repostería · Cafetería · Maracaibo",
       "cafe.hero.title": "Hecho con amor,\nhorneado con legado",
       "cafe.hero.sub":
-        "Pan recién horneado, postres únicos y café de especialidad. Cuatro sedes en Maracaibo para que te quedes un poco más.",
+        "Pan recién horneado, postres únicos y café de especialidad. Tres sedes en Maracaibo para que te quedes un poco más.",
       "cafe.hero.cta1": "Ver la carta",
       "cafe.hero.cta2": "Ubícanos",
       "cafe.hero.scroll": "Descubre",
@@ -108,7 +108,7 @@
       "cafe.h.d1": "Todos los días",
       "cafe.h.t1": "07:00 a. m. – 10:00 p. m.",
       "cafe.u.title": "Maracaibo, Edo. Zulia",
-      "cafe.u.sub": "Cuatro sedes para encontrarnos. Te esperamos.",
+      "cafe.u.sub": "Tres sedes para encontrarnos. Te esperamos.",
 
       "footer.rist": "Ristorante",
       "footer.cafe": "Café",
@@ -209,7 +209,7 @@
       "cafe.hero.kicker": "Artisan Bakery · Pastry · Coffee · Maracaibo",
       "cafe.hero.title": "Made with love,\nbaked with legacy",
       "cafe.hero.sub":
-        "Freshly baked bread, unique pastries and specialty coffee. Four locations in Maracaibo — stay a little longer.",
+        "Freshly baked bread, unique pastries and specialty coffee. Three locations in Maracaibo — stay a little longer.",
       "cafe.hero.cta1": "See the menu",
       "cafe.hero.cta2": "Find us",
       "cafe.hero.scroll": "Discover",
@@ -224,7 +224,7 @@
       "cafe.h.d1": "Every day",
       "cafe.h.t1": "07:00 a.m. – 10:00 p.m.",
       "cafe.u.title": "Maracaibo, Zulia State",
-      "cafe.u.sub": "Four locations to meet. We'll be waiting.",
+      "cafe.u.sub": "Three locations to meet. We'll be waiting.",
 
       "footer.rist": "Ristorante",
       "footer.cafe": "Café",
