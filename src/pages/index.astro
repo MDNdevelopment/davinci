@@ -17,11 +17,14 @@ import heroSlide2 from "../assets/img/hero/davinci-hero-2.webp";
 import heroSlide3 from "../assets/img/hero/davinci-hero-3.webp";
 import marquesina1 from "../assets/img/marquesina/davinci-marquesina-1.webp";
 import marquesina2 from "../assets/img/marquesina/davinci-marquesina-2.webp";
-import marquesina3 from "../assets/img/marquesina/davinci-marquesina-3.webp";
 import marquesina4 from "../assets/img/marquesina/davinci-marquesina-4.webp";
-import marquesina5 from "../assets/img/marquesina/davinci-marquesina-5.webp";
 import marquesina7 from "../assets/img/marquesina/davinci-marquesina-7.webp";
-import marquesina8 from "../assets/img/marquesina/davinci-marquesina-8.webp";
+import bolognesa from "../assets/img/marquesina/davinci-bolognesa.webp";
+import filettoPavarotti from "../assets/img/marquesina/davinci-filetto-pavarotti.webp";
+import trioDiPasta from "../assets/img/marquesina/davinci-trio-di-pasta.webp";
+import sbriciolata from "../assets/img/marquesina/davinci-sbriciolata.webp";
+import mesaCompartir from "../assets/img/marquesina/davinci-mesa-compartir.webp";
+import nosotrosMesa from "../assets/img/nosotros/davinci-nosotros-padellas.webp";
 
 // The hero slides are painted via CSS `background-image` (cross-fade
 // slideshow), so we run them through astro:assets' build pipeline with
@@ -37,9 +40,12 @@ const marquesinaFiles = {
   1: marquesina1,
   2: marquesina2,
   4: marquesina4,
-  5: marquesina5,
   7: marquesina7,
-  8: marquesina8,
+  bolognesa,
+  filettoPavarotti,
+  trioDiPasta,
+  sbriciolata,
+  mesaCompartir,
 };
 
 const navLinks = [
@@ -62,11 +68,14 @@ const socialLinks = [
 
 const MARQUEE_TILES = [
   { file: "1", alt: "Ambiente del salón principal de Da Vinci Ristorante Maracaibo" },
+  { file: "bolognesa", alt: "Pasta a la boloñesa con pan artesanal en Da Vinci Ristorante Maracaibo" },
   { file: "2", alt: "Cocina italiana auténtica en Da Vinci Ristorante Maracaibo" },
-  { file: "8", alt: "Da Vinci Ristorante desde 1996, cocina italiana en Maracaibo" },
-  { file: "5", alt: "Pasta artesanal del restaurante italiano Da Vinci en Maracaibo" },
+  { file: "filettoPavarotti", alt: "Filetto Pavarotti sobre puré, plato italiano de Da Vinci Maracaibo" },
   { file: "7", alt: "Gastronomía italiana y vinos en Da Vinci Maracaibo" },
+  { file: "trioDiPasta", alt: "Trío di pasta, pasta artesanal del restaurante italiano Da Vinci en Maracaibo" },
   { file: "4", alt: "Platos italianos artesanales Da Vinci Maracaibo" },
+  { file: "mesaCompartir", alt: "Cappuccino y muffins para compartir en Da Vinci Maracaibo" },
+  { file: "sbriciolata", alt: "Sbriciolata ai frutti di bosco, postre italiano de Da Vinci Maracaibo" },
 ];
 ---
 
@@ -262,13 +271,13 @@ const MARQUEE_TILES = [
       </div>
       <div class="dv-nosotros__media reveal">
         <Image
-          src={marquesina3}
+          src={nosotrosMesa}
           widths={[400, 800]}
           sizes="(min-width: 900px) 34vw, 90vw"
           loading="lazy"
           width={400}
           height={600}
-          alt="Ambiente Da Vinci Ristorante"
+          alt="Mesa para compartir con padellas de pasta en Da Vinci Ristorante Maracaibo"
         />
         <div class="dv-nosotros__badge">DAL 1996</div>
       </div>
